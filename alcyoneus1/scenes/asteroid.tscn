@@ -7,8 +7,9 @@
 radius = 41.0271
 height = 124.403
 
-[node name="Asteroid" type="Area2D"]
+[node name="Asteroid" type="Area2D" groups=["asteroid"]]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_p0ukn")
 speed = 300.0
 
