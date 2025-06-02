@@ -1,7 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://bagemlfpbav18"]
+[gd_scene load_steps=26 format=3 uid="uid://bagemlfpbav18"]
 
 [ext_resource type="Script" uid="uid://bj20qe7fitb6l" path="res://GDscripts/PlayerSC.gd" id="1_3m5ht"]
-[ext_resource type="PackedScene" uid="uid://bumlxsowky0yy" path="res://scenes/bullet.tscn" id="2_08kqv"]
+[ext_resource type="Script" uid="uid://plqdxjwegkkk" path="res://scenes/node_2d.gd" id="1_hsdmi"]
 [ext_resource type="Texture2D" uid="uid://dl6k7oxfdx01b" path="res://modely/hrac/Spike_SpriteSheet.png" id="2_dubn7"]
 [ext_resource type="Texture2D" uid="uid://cq7ragpdqp4mi" path="res://modely/map/map.jpeg" id="3_08kqv"]
 [ext_resource type="Script" uid="uid://dnndekely1pf" path="res://GDscripts/Spawner.gd" id="4_f6ptj"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://dsfjlvt45ld2t" path="res://scenes/asteroid3.tscn" id="7_xtx0q"]
 [ext_resource type="PackedScene" uid="uid://bmglmr2nwulyt" path="res://scenes/asteroid4.tscn" id="8_3kg8w"]
 [ext_resource type="PackedScene" uid="uid://bq0h2kpamdx23" path="res://scenes/asteroid5.tscn" id="9_x63s8"]
+[ext_resource type="AudioStream" uid="uid://c0ls3hi3v5nkt" path="res://modely/Sounds/ambient_space_music.wav" id="11_ifa78"]
+[ext_resource type="AudioStream" uid="uid://b4a2pj88djffk" path="res://modely/Sounds/explosion.wav" id="12_xtx0q"]
+[ext_resource type="AudioStream" uid="uid://c46o5wlbvcsur" path="res://modely/Sounds/engine_loop.wav" id="13_3kg8w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
 atlas = ExtResource("2_dubn7")
@@ -76,6 +79,7 @@ size = Vector2(11088.3, 460.698)
 [node name="Node2D" type="Node2D"]
 position = Vector2(575, 313)
 rotation = 0.00259078
+script = ExtResource("1_hsdmi")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(956.113, -343.478)
@@ -83,7 +87,6 @@ motion_mode = 1
 wall_min_slide_angle = 0.785398
 script = ExtResource("1_3m5ht")
 speed = 500
-bullet_scene = ExtResource("2_08kqv")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(0.00259018, 1.00003)
@@ -111,6 +114,10 @@ shape = SubResource("CapsuleShape2D_epypp")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(26.9999, -0.0699496)
 shape = SubResource("RectangleShape2D_0hol4")
+
+[node name="EnginePlayer" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("13_3kg8w")
+volume_db = -23.194
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
@@ -185,3 +192,11 @@ asteroid_scene = ExtResource("9_x63s8")
 [node name="AsteroidTimer" type="Timer" parent="Spawner5"]
 wait_time = 0.2
 autostart = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ifa78")
+volume_db = -0.035
+
+[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_xtx0q")
+volume_db = 24.0
