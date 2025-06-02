@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmglmr2nwulyt"]
+
+[ext_resource type="Script" uid="uid://ve8usgncs8tl" path="res://GDscripts/Asteroid.gd" id="1_b4yq0"]
+[ext_resource type="Texture2D" uid="uid://nm6dwhg02clp" path="res://modely/objects/04.png" id="2_yvaov"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t21oa"]
+radius = 38.7368
+height = 115.659
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_b4yq0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yvaov")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = -0.278548
+shape = SubResource("CapsuleShape2D_t21oa")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

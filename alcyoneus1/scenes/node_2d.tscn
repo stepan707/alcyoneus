@@ -1,0 +1,185 @@
+[gd_scene load_steps=22 format=3 uid="uid://bagemlfpbav18"]
+
+[ext_resource type="Script" uid="uid://bj20qe7fitb6l" path="res://GDscripts/PlayerSC.gd" id="1_3m5ht"]
+[ext_resource type="Texture2D" uid="uid://dl6k7oxfdx01b" path="res://modely/hrac/Spike_SpriteSheet.png" id="2_dubn7"]
+[ext_resource type="Texture2D" uid="uid://cq7ragpdqp4mi" path="res://modely/map/map.jpeg" id="3_08kqv"]
+[ext_resource type="Script" uid="uid://dnndekely1pf" path="res://GDscripts/Spawner.gd" id="4_f6ptj"]
+[ext_resource type="PackedScene" uid="uid://cl7k04g72r40o" path="res://scenes/asteroid.tscn" id="5_hsdmi"]
+[ext_resource type="PackedScene" uid="uid://cpibedakvs82c" path="res://scenes/asteroid2.tscn" id="6_ifa78"]
+[ext_resource type="PackedScene" uid="uid://dsfjlvt45ld2t" path="res://scenes/asteroid3.tscn" id="7_xtx0q"]
+[ext_resource type="PackedScene" uid="uid://bmglmr2nwulyt" path="res://scenes/asteroid4.tscn" id="8_3kg8w"]
+[ext_resource type="PackedScene" uid="uid://bq0h2kpamdx23" path="res://scenes/asteroid5.tscn" id="9_x63s8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
+atlas = ExtResource("2_dubn7")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj586"]
+atlas = ExtResource("2_dubn7")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d21ai"]
+atlas = ExtResource("2_dubn7")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdubu"]
+atlas = ExtResource("2_dubn7")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6r6c"]
+atlas = ExtResource("2_dubn7")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4d7sh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hol4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj586")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d21ai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdubu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6r6c")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epypp"]
+radius = 25.9943
+height = 64.028
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
+size = Vector2(96.497, 21.5012)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
+size = Vector2(9229.67, 315.505)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
+size = Vector2(824.835, 4539.97)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdubu"]
+size = Vector2(1014.32, 7618.07)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d21ai"]
+size = Vector2(11088.3, 460.698)
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(575, 313)
+rotation = 0.00259078
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(956.113, -343.478)
+motion_mode = 1
+wall_min_slide_angle = 0.785398
+script = ExtResource("1_3m5ht")
+speed = 500
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(0.00259018, 1.00003)
+zoom = Vector2(0.7, 0.7)
+limit_left = -655
+limit_top = -2270
+limit_right = 3900
+limit_bottom = 1910
+limit_smoothed = true
+editor_draw_limits = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(1.00002, -0.00260925)
+rotation = 1.57026
+scale = Vector2(0.318869, 0.315284)
+sprite_frames = SubResource("SpriteFrames_4d7sh")
+animation = &"fly"
+frame_progress = 0.583751
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-29.0025, -0.92485)
+rotation = 1.54721
+shape = SubResource("CapsuleShape2D_epypp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(26.9999, -0.0699496)
+shape = SubResource("RectangleShape2D_0hol4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -3
+follow_viewport_scale = 270.231
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+follow_viewport_enabled = true
+follow_viewport_scale = 0.8
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
+position = Vector2(1622.5, -192.5)
+scale = Vector2(4.95148, 4.29657)
+texture = ExtResource("3_08kqv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1.00261, 0.997417)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(98.5547, 1741.45)
+shape = SubResource("RectangleShape2D_epypp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1665.95, -631.68)
+shape = SubResource("RectangleShape2D_q6r6c")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3807.32, -1125.87)
+shape = SubResource("RectangleShape2D_kdubu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(701.997, -2812.77)
+shape = SubResource("RectangleShape2D_d21ai")
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("4_f6ptj")
+asteroid_scene = ExtResource("5_hsdmi")
+
+[node name="AsteroidTimer" type="Timer" parent="Spawner"]
+wait_time = 0.3
+autostart = true
+
+[node name="Spawner2" type="Node2D" parent="."]
+script = ExtResource("4_f6ptj")
+asteroid_scene = ExtResource("6_ifa78")
+
+[node name="AsteroidTimer" type="Timer" parent="Spawner2"]
+wait_time = 3.0
+autostart = true
+
+[node name="Spawner3" type="Node2D" parent="."]
+script = ExtResource("4_f6ptj")
+asteroid_scene = ExtResource("7_xtx0q")
+
+[node name="AsteroidTimer" type="Timer" parent="Spawner3"]
+wait_time = 5.0
+autostart = true
+
+[node name="Spawner4" type="Node2D" parent="."]
+position = Vector2(0.999996, -0.00259078)
+script = ExtResource("4_f6ptj")
+asteroid_scene = ExtResource("8_3kg8w")
+
+[node name="AsteroidTimer" type="Timer" parent="Spawner4"]
+wait_time = 0.35
+autostart = true
+
+[node name="Spawner5" type="Node2D" parent="."]
+position = Vector2(-12, 0.0310893)
+script = ExtResource("4_f6ptj")
+asteroid_scene = ExtResource("9_x63s8")
+
+[node name="AsteroidTimer" type="Timer" parent="Spawner5"]
+wait_time = 0.2
+autostart = true
