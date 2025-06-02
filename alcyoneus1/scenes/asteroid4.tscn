@@ -7,9 +7,8 @@
 radius = 38.7368
 height = 115.659
 
-[node name="Area2D" type="Area2D" groups=["asteroid"]]
+[node name="Area2D" type="Area2D"]
 collision_layer = 2
-collision_mask = 5
 script = ExtResource("1_b4yq0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

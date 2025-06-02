@@ -4,7 +4,9 @@ extends Area2D
 @export var direction: Vector2 = Vector2.DOWN
 
 func _ready() -> void:
-	connect("body_entered", self._on_body_entered)
+	# Zabráníme chybě, pokud už signál byl připojen
+	if not is_connected("body_entered", self._on_body_entered):
+		connect("body_entered", self._on_body_entered)
 
 func _process(delta: float) -> void:
 	position += direction.normalized() * speed * delta
