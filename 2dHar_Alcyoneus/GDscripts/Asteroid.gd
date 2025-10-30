@@ -8,7 +8,7 @@ var rotation_speed: float = 0.0
 
 func _ready() -> void:    
 	rotation_speed = randf_range(-1.0, 1.0)
-	var random_angle_deg = randf_range(-45.0, 45.0) 
+	var random_angle_deg = randf_range(-40.0, 40.0) 
 	direction = Vector2.DOWN.rotated(deg_to_rad(random_angle_deg))
 	connect("body_entered", self._on_body_entered)
 	connect("area_entered", self._on_area_entered)
