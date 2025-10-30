@@ -25,5 +25,6 @@ func set_direction(dir: Vector2):
 
 func _on_area_entered(area):
 	if area.is_in_group("asteroid"):
+		ScoreManager.add_score(100)
 		area.queue_free() 
 		queue_free()       

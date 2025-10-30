@@ -17,7 +17,6 @@ var shoot_cooldown := 0.5
 func _ready():
 	thruster_anim = $AnimatedSprite2D
 	ScoreManager.score = 0
-	ScoreManager.running = true
 	get_tree().paused = false
 
 	engine_sound.play()
@@ -71,7 +70,6 @@ func hit() -> void:
 		thruster_anim.visible = false        
 		explosion_sprite.visible = true
 		await get_tree().create_timer(1.5).timeout        
-		ScoreManager.running = false
 		set_process(false)
 		set_physics_process(false)
 		get_tree().change_scene_to_file("res://scenes/GameOverScene.tscn")
