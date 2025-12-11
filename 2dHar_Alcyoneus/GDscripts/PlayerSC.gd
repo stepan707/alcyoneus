@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var music_player = get_node("/root/Node2D/MusicPlayer")
 @onready var explosion_player = get_node("/root/Node2D/ExplosionPlayer")
 @onready var explosion_sprite = $ExplosionSprite2D
+var level = 1
 
 @export var speed = 400
 var alive = true
@@ -17,6 +18,7 @@ var shoot_cooldown := 0.5
 func _ready():
 	thruster_anim = $AnimatedSprite2D
 	ScoreManager.score = 0
+	
 	get_tree().paused = false
 
 	engine_sound.play()

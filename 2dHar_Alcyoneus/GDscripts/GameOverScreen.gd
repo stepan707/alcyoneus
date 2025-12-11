@@ -7,6 +7,7 @@ extends Control
 @onready var play_again_button: Button = $BackgroundPanel/ContentContainer/PlayAgainButton
 @onready var main_menu_button: Button = $BackgroundPanel/ContentContainer/MainMenuButton
 @onready var music_player = get_node("GameOver")
+@onready var hoverSound = get_node("hover")
 
 func _ready():	
 	if content_container == null:
@@ -43,3 +44,7 @@ func _on_play_again_button_pressed():
 func _on_main_menu_button_pressed():
 	ScoreManager.reset_score()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+
+func _on_mouse_entered() -> void:
+	hoverSound.play()
