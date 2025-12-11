@@ -1,0 +1,229 @@
+[gd_scene load_steps=30 format=3 uid="uid://bviypuhwgy8d8"]
+
+[ext_resource type="Script" uid="uid://bj20qe7fitb6l" path="res://GDscripts/PlayerSC.gd" id="2_g8vcy"]
+[ext_resource type="PackedScene" uid="uid://bumlxsowky0yy" path="res://scenes/bullet.tscn" id="3_cqal4"]
+[ext_resource type="Texture2D" uid="uid://dl6k7oxfdx01b" path="res://modely/hrac/Spike_SpriteSheet.png" id="4_o3sye"]
+[ext_resource type="AudioStream" uid="uid://c8a4iyqr1glof" path="res://modely/Sounds/engine_loop.wav" id="5_24ks5"]
+[ext_resource type="AudioStream" uid="uid://7cdsh1wlprba" path="res://modely/Sounds/shooting.wav" id="6_s4es8"]
+[ext_resource type="Texture2D" uid="uid://ci6viutp1uyo1" path="res://modely/realCoolExplosion.png" id="7_63e4f"]
+[ext_resource type="Texture2D" uid="uid://cq7ragpdqp4mi" path="res://modely/map/map.jpeg" id="8_y6lc1"]
+[ext_resource type="Script" uid="uid://dnndekely1pf" path="res://GDscripts/Spawner.gd" id="9_ekhvm"]
+[ext_resource type="PackedScene" uid="uid://daf2vkksxqtn8" path="res://scenes/asteroid1.tscn" id="10_ca42v"]
+[ext_resource type="PackedScene" uid="uid://d2wydwh87gfvr" path="res://scenes/asteroid2.tscn" id="11_rysoc"]
+[ext_resource type="PackedScene" uid="uid://bisnh0eai4gq3" path="res://scenes/asteroid3.tscn" id="12_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://bwf2xai8cvd1g" path="res://scenes/asteroid4.tscn" id="13_264po"]
+[ext_resource type="PackedScene" uid="uid://dd00l6kaa0qq5" path="res://scenes/asteroid5.tscn" id="14_1kice"]
+[ext_resource type="AudioStream" uid="uid://co8pc1kacl68l" path="res://modely/Sounds/ambient_space_music.wav" id="15_qo7hg"]
+[ext_resource type="AudioStream" uid="uid://ca7yqs8xivx62" path="res://modely/Sounds/explosion.wav" id="16_odav0"]
+
+[sub_resource type="GDScript" id="GDScript_ir15t"]
+script/source = "extends Node2D
+
+func _ready():
+	$MusicPlayer.play()
+
+func _process(_delta):
+	if not $MusicPlayer.playing:
+		$MusicPlayer.play()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
+atlas = ExtResource("4_o3sye")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj586"]
+atlas = ExtResource("4_o3sye")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d21ai"]
+atlas = ExtResource("4_o3sye")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdubu"]
+atlas = ExtResource("4_o3sye")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6r6c"]
+atlas = ExtResource("4_o3sye")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4d7sh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hol4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj586")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d21ai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdubu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q6r6c")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epypp"]
+radius = 25.9943
+height = 64.028
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
+size = Vector2(96.497, 21.5012)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
+size = Vector2(6386.92, 490.472)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6r6c"]
+size = Vector2(1006.74, 4539.97)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdubu"]
+size = Vector2(1152.42, 4714.38)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d21ai"]
+size = Vector2(6201.28, 707.407)
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_ca42v"]
+fade_time = 0.0
+stream_count = 1
+stream_0 = ExtResource("15_qo7hg")
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(575, 313)
+rotation = 0.00259078
+script = SubResource("GDScript_ir15t")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
+position = Vector2(956.113, -343.478)
+motion_mode = 1
+wall_min_slide_angle = 0.785398
+script = ExtResource("2_g8vcy")
+speed = 500
+bullet_scene = ExtResource("3_cqal4")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(0.00259018, 1.00003)
+zoom = Vector2(0.5, 0.5)
+limit_left = -575
+limit_top = -2190
+limit_right = 3820
+limit_bottom = 1830
+limit_smoothed = true
+editor_draw_limits = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(1.00002, -0.00260925)
+rotation = 1.57026
+scale = Vector2(0.318869, 0.315284)
+sprite_frames = SubResource("SpriteFrames_4d7sh")
+animation = &"fly"
+frame_progress = 0.583751
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-29.0025, -0.92485)
+rotation = 1.54721
+shape = SubResource("CapsuleShape2D_epypp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(26.9999, -0.0699496)
+shape = SubResource("RectangleShape2D_0hol4")
+
+[node name="EnginePlayer" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("5_24ks5")
+volume_db = -23.194
+
+[node name="ShootPlayer" type="AudioStreamPlayer" parent="CharacterBody2D"]
+stream = ExtResource("6_s4es8")
+
+[node name="ExplosionSprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-6.00232, -0.984697)
+rotation = 0.649262
+scale = Vector2(0.617, 0.603)
+texture = ExtResource("7_63e4f")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -3
+follow_viewport_scale = 270.231
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+follow_viewport_enabled = true
+follow_viewport_scale = 0.8
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
+position = Vector2(1618.75, -168.75)
+scale = Vector2(4.95148, 4.29657)
+texture = ExtResource("8_y6lc1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(1.00261, 0.997417)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1190.74, 1653.97)
+shape = SubResource("RectangleShape2D_epypp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1575, -631.68)
+shape = SubResource("RectangleShape2D_q6r6c")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(3738.27, -601.979)
+shape = SubResource("RectangleShape2D_kdubu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1179.49, -2689.42)
+shape = SubResource("RectangleShape2D_d21ai")
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("9_ekhvm")
+asteroid_scene = ExtResource("10_ca42v")
+
+[node name="AsteroidTimer" type="Timer" parent="Spawner"]
+wait_time = 0.4
+autostart = true
+
+[node name="Spawner2" type="Node2D" parent="."]
+script = ExtResource("9_ekhvm")
+asteroid_scene = ExtResource("11_rysoc")
+
+[node name="AsteroidTimer" type="Timer" parent="Spawner2"]
+wait_time = 0.8
+autostart = true
+
+[node name="Spawner3" type="Node2D" parent="."]
+script = ExtResource("9_ekhvm")
+asteroid_scene = ExtResource("12_ssvqc")
+
+[node name="AsteroidTimer" type="Timer" parent="Spawner3"]
+autostart = true
+
+[node name="Spawner4" type="Node2D" parent="."]
+position = Vector2(0.999996, -0.00259078)
+script = ExtResource("9_ekhvm")
+asteroid_scene = ExtResource("13_264po")
+
+[node name="AsteroidTimer" type="Timer" parent="Spawner4"]
+wait_time = 0.4
+autostart = true
+
+[node name="Spawner5" type="Node2D" parent="."]
+position = Vector2(-12, 0.0310893)
+script = ExtResource("9_ekhvm")
+asteroid_scene = ExtResource("14_1kice")
+
+[node name="AsteroidTimer" type="Timer" parent="Spawner5"]
+wait_time = 0.2
+autostart = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamPlaylist_ca42v")
+volume_db = 1.0
+
+[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_odav0")
+volume_db = 5.0

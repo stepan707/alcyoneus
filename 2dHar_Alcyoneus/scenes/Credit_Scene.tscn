@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://difa5hk8vnga1"]
+
+[ext_resource type="Script" uid="uid://tndt562eqs5c" path="res://GDscripts/credit_scene.gd" id="1_2411m"]
+[ext_resource type="Texture2D" uid="uid://c62l4m0nk50ga" path="res://modely/map/Nebula Red.png" id="2_2411m"]
+[ext_resource type="AudioStream" uid="uid://evre74khn02i" path="res://modely/Sounds/hover.wav" id="3_fgixj"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_2411m")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.104
+anchor_top = 0.059
+anchor_right = 0.888
+anchor_bottom = 0.983
+offset_left = 0.192001
+offset_top = -31.232
+offset_right = 111.024
+offset_bottom = -30.984
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 18
+
+[node name="Button" type="Button" parent="CanvasLayer" groups=["buttons"]]
+offset_left = 447.0
+offset_top = 559.0
+offset_right = 689.0
+offset_bottom = 602.0
+theme_override_font_sizes/font_size = 25
+text = "back to main menu"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
+position = Vector2(641, 258)
+scale = Vector2(0.325933, 0.188691)
+texture = ExtResource("2_2411m")
+
+[node name="hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fgixj")
+volume_db = 8.0
+max_polyphony = 5
+
+[connection signal="mouse_entered" from="CanvasLayer/Button" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

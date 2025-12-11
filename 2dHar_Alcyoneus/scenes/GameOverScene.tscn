@@ -1,0 +1,120 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4hfktnk2u013"]
+
+[ext_resource type="Script" uid="uid://dofol0o7fj3nn" path="res://GDscripts/GameOverScreen.gd" id="1_o7x5s"]
+[ext_resource type="Texture2D" uid="uid://bxkqk7ki41g6f" path="res://modely/map/Nebula Blue.png" id="2_tgqjs"]
+[ext_resource type="AudioStream" uid="uid://b3uikacgikl5p" path="res://modely/Sounds/game-over-arcade-6435.wav" id="3_tgqjs"]
+[ext_resource type="AudioStream" uid="uid://evre74khn02i" path="res://modely/Sounds/hover.wav" id="4_1ubts"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o7x5s")
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.998
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = -142.0
+offset_right = 1146.3
+offset_bottom = 672.0
+texture = ExtResource("2_tgqjs")
+expand_mode = 1
+
+[node name="ContentContainer" type="VBoxContainer" parent="BackgroundPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.372
+anchor_top = 0.387
+anchor_right = 0.656
+anchor_bottom = 0.687
+offset_left = -0.544006
+offset_top = 0.223984
+offset_right = 0.287964
+offset_bottom = -0.176025
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="BackgroundPanel/ContentContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 0, 0, 0.741176)
+theme_override_colors/font_shadow_color = Color(0.47451, 0.0117647, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.254902, 1, 0.658824)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 27
+text = "Konec hry"
+
+[node name="CurrentScore" type="Label" parent="BackgroundPanel/ContentContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 0, 0, 0.741176)
+theme_override_colors/font_shadow_color = Color(0.47451, 0.0117647, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.254902, 1, 0.658824)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 27
+text = "Vaše skóre: 0"
+
+[node name="BestScore" type="Label" parent="BackgroundPanel/ContentContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 0, 0, 0.741176)
+theme_override_colors/font_shadow_color = Color(0.47451, 0.0117647, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.254902, 1, 0.658824)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 27
+text = "Nejlepší skóre: 0"
+
+[node name="PlayAgainButton" type="Button" parent="BackgroundPanel/ContentContainer" groups=["buttons"]]
+modulate = Color(1, 0.72549, 0, 1)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.6, 0, 0.6, 0.862745)
+theme_override_colors/font_outline_color = Color(0, 0.254902, 1, 0.658824)
+theme_override_colors/font_color = Color(1, 0, 0, 0.741176)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 25
+text = "Hrát znovu"
+
+[node name="MainMenuButton" type="Button" parent="BackgroundPanel/ContentContainer" groups=["buttons"]]
+modulate = Color(1, 0.72549, 0, 1)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.6, 0, 0.6, 0.862745)
+theme_override_colors/font_outline_color = Color(0, 0.254902, 1, 0.658824)
+theme_override_colors/font_color = Color(1, 0, 0, 0.741176)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 25
+text = "Hlavní menu"
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tgqjs")
+volume_db = 10.0
+mix_target = 1
+
+[node name="hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1ubts")
+volume_db = 5.0
+max_polyphony = 5
+
+[connection signal="mouse_entered" from="BackgroundPanel/ContentContainer/PlayAgainButton" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="BackgroundPanel/ContentContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="mouse_entered" from="BackgroundPanel/ContentContainer/MainMenuButton" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="BackgroundPanel/ContentContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
