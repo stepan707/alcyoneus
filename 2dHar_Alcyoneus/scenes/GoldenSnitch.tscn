@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3hulh3iwvyy4"]
+
+[ext_resource type="Texture2D" uid="uid://d3r8lhir52bto" path="res://modely/hrac/goldShip.png" id="1_7g5y4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xo7iq"]
+radius = 15.0
+height = 142.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kdet1"]
+radius = 37.0
+
+[node name="Area2D" type="Area2D"]
+light_mask = 2
+rotation = 1.57978
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -4.76837e-07)
+scale = Vector2(0.472806, 0.462156)
+texture = ExtResource("1_7g5y4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -16)
+shape = SubResource("CapsuleShape2D_xo7iq")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 47)
+shape = SubResource("CircleShape2D_kdet1")

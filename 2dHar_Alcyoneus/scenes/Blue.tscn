@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://udb7jwrurxpb"]
+
+[ext_resource type="Texture2D" uid="uid://c6lu8bllp0f1o" path="res://modely/enemies/Blue/Blue.png" id="1_jx16j"]
+[ext_resource type="Script" uid="uid://bvexq6rupd50c" path="res://GDscripts/blue.gd" id="1_vq4um"]
+[ext_resource type="PackedScene" uid="uid://lqou5krv0jkm" path="res://scenes/HomingRocket.tscn" id="2_l4ws6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq4um"]
+size = Vector2(89, 58)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l4ws6"]
+radius = 16.9653
+height = 97.9615
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(1.53576, 1.46591)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_vq4um")
+rocket_scene = ExtResource("2_l4ws6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.56708
+texture = ExtResource("1_jx16j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6.5, 0)
+shape = SubResource("RectangleShape2D_vq4um")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 0)
+rotation = 0.0280516
+shape = SubResource("CapsuleShape2D_l4ws6")

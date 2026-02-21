@@ -1,37 +1,148 @@
-[gd_scene load_steps=2 format=3 uid="uid://o20yffdel8qo"]
+[gd_scene load_steps=6 format=3 uid="uid://o20yffdel8qo"]
 
-[ext_resource type="Script" uid="uid://dph8g1rbfj033" path="res://scenes/settings.gd" id="1_i47rn"]
+[ext_resource type="Script" uid="uid://dw77lqiaj6jyf" path="res://GDscripts/Settings.gd" id="1_i47rn"]
+[ext_resource type="Texture2D" uid="uid://c62l4m0nk50ga" path="res://modely/map/Nebula Red.png" id="2_i47rn"]
+[ext_resource type="AudioStream" uid="uid://evre74khn02i" path="res://modely/Sounds/hover.wav" id="3_46duy"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i47rn"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46duy"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(0.458824, 0.145098, 0, 1)
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1156.0
+offset_bottom = 648.0
 script = ExtResource("1_i47rn")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -113.0
+offset_right = 4083.0
+offset_bottom = 3983.0
+scale = Vector2(0.318882, 0.197929)
+texture = ExtResource("2_i47rn")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.104
-anchor_top = 0.059
-anchor_right = 0.888
-anchor_bottom = 0.983
-offset_left = -5.808
-offset_top = -7.232
-offset_right = 105.024
-offset_bottom = -6.98401
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 18
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
 
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 447.0
-offset_top = 559.0
-offset_right = 689.0
-offset_bottom = 602.0
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+offset_left = 505.0
+offset_top = 162.0
+offset_right = 758.0
+offset_bottom = 470.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_i47rn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.41598, 0.41598, 0.41598, 1)
 theme_override_font_sizes/font_size = 25
-text = "back to main menu"
+text = "SETTINGS"
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
-position = Vector2(641, 258)
-scale = Vector2(0.325933, 0.188691)
+[node name="Label2" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "Volume"
 
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[node name="HSlider" type="HSlider" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AccountSection" type="VBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer/AccountSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.800491, 0.800491, 0.800491, 1)
+theme_override_font_sizes/font_size = 20
+text = "Account management"
+
+[node name="ChangePasswordBtn" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/AccountSection"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "Chenge password"
+
+[node name="LogoutBtn" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/AccountSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.773856, 2.23808e-06, 9.62615e-07, 1)
+theme_override_font_sizes/font_size = 17
+text = "Logout"
+
+[node name="HSeparator3" type="HSeparator" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BackBtn" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 17
+text = "Back to menu"
+
+[node name="PasswordModal" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 206.0
+offset_top = 178.0
+offset_right = 935.0
+offset_bottom = 489.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_46duy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PasswordModal"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PasswordModal/VBoxContainer"]
+layout_mode = 2
+text = "New password"
+
+[node name="NewPasswordInput" type="LineEdit" parent="PasswordModal/VBoxContainer"]
+layout_mode = 2
+secret = true
+
+[node name="ConfirmPasswordBtn" type="Button" parent="PasswordModal/VBoxContainer"]
+layout_mode = 2
+text = "Confirm"
+
+[node name="CancelPasswordBtn" type="Button" parent="PasswordModal/VBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="StatusLabel" type="Label" parent="PasswordModal/VBoxContainer"]
+layout_mode = 2
+
+[node name="hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_46duy")
+volume_db = 5.0
+max_polyphony = 5
+
+[connection signal="value_changed" from="CenterContainer/PanelContainer/VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="mouse_entered" from="CenterContainer/PanelContainer/VBoxContainer/AccountSection/ChangePasswordBtn" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/AccountSection/ChangePasswordBtn" to="." method="_on_change_password_btn_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/PanelContainer/VBoxContainer/AccountSection/LogoutBtn" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/AccountSection/LogoutBtn" to="." method="_on_logout_btn_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/PanelContainer/VBoxContainer/BackBtn" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/VBoxContainer/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="PasswordModal/VBoxContainer/ConfirmPasswordBtn" to="." method="_on_confirm_password_btn_pressed"]
+[connection signal="pressed" from="PasswordModal/VBoxContainer/CancelPasswordBtn" to="." method="_on_cancel_password_btn_pressed"]

@@ -14,11 +14,13 @@ config/name="Alcyoneus"
 run/main_scene="uid://bqc8cckhf61g"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://c8grcwma5qcs2"
+config/macos_native_icon="res://icon.ico"
 config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
 ScoreManager="*res://GDscripts/ScoreManager.gd"
+Global="*res://GDscripts/Global.gd"
 
 [display]
 

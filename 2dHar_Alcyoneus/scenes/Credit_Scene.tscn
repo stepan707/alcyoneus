@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://difa5hk8vnga1"]
 
 [ext_resource type="Script" uid="uid://tndt562eqs5c" path="res://GDscripts/credit_scene.gd" id="1_2411m"]
-[ext_resource type="Texture2D" uid="uid://c62l4m0nk50ga" path="res://modely/map/Nebula Red.png" id="2_2411m"]
+[ext_resource type="Texture2D" uid="uid://bf1dxulb5rv72" path="res://modely/map/2.jpeg" id="2_fgixj"]
 [ext_resource type="AudioStream" uid="uid://evre74khn02i" path="res://modely/Sounds/hover.wav" id="3_fgixj"]
 
 [node name="Node2D" type="Node2D"]
@@ -33,9 +33,9 @@ text = "back to main menu"
 [node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
-position = Vector2(641, 258)
-scale = Vector2(0.325933, 0.188691)
-texture = ExtResource("2_2411m")
+position = Vector2(589, 217)
+scale = Vector2(1.18164, 1.10059)
+texture = ExtResource("2_fgixj")
 
 [node name="hover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_fgixj")

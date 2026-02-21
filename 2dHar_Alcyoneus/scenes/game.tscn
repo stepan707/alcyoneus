@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bviypuhwgy8d8"]
+[gd_scene load_steps=36 format=3 uid="uid://bviypuhwgy8d8"]
 
 [ext_resource type="Script" uid="uid://bj20qe7fitb6l" path="res://GDscripts/PlayerSC.gd" id="2_g8vcy"]
 [ext_resource type="PackedScene" uid="uid://bumlxsowky0yy" path="res://scenes/bullet.tscn" id="3_cqal4"]
@@ -15,6 +15,12 @@
 [ext_resource type="PackedScene" uid="uid://dd00l6kaa0qq5" path="res://scenes/asteroid5.tscn" id="14_1kice"]
 [ext_resource type="AudioStream" uid="uid://co8pc1kacl68l" path="res://modely/Sounds/ambient_space_music.wav" id="15_qo7hg"]
 [ext_resource type="AudioStream" uid="uid://ca7yqs8xivx62" path="res://modely/Sounds/explosion.wav" id="16_odav0"]
+[ext_resource type="Script" uid="uid://rfp7tyvyqvnw" path="res://GDscripts/Obelisk_spawner.gd" id="16_rysoc"]
+[ext_resource type="PackedScene" uid="uid://bgfagofvjd4fb" path="res://scenes/Obelisk.tscn" id="17_ssvqc"]
+[ext_resource type="Script" uid="uid://dh0cpjpt80wsq" path="res://GDscripts/enemy_spawner.gd" id="18_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://gcrmawcbangk" path="res://scenes/LittleRed.tscn" id="19_264po"]
+[ext_resource type="PackedScene" uid="uid://udb7jwrurxpb" path="res://scenes/Blue.tscn" id="20_1kice"]
+[ext_resource type="Script" uid="uid://cj1ivrbpmybo6" path="res://GDscripts/enemy_spawnerY.gd" id="21_5newe"]
 
 [sub_resource type="GDScript" id="GDScript_ir15t"]
 script/source = "extends Node2D
@@ -142,6 +148,7 @@ volume_db = -23.194
 stream = ExtResource("6_s4es8")
 
 [node name="ExplosionSprite2D" type="Sprite2D" parent="CharacterBody2D"]
+visible = false
 position = Vector2(-6.00232, -0.984697)
 rotation = 0.649262
 scale = Vector2(0.617, 0.603)
@@ -156,7 +163,7 @@ follow_viewport_enabled = true
 follow_viewport_scale = 0.8
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
-position = Vector2(1618.75, -168.75)
+position = Vector2(1592.5, -153.75)
 scale = Vector2(4.95148, 4.29657)
 texture = ExtResource("8_y6lc1")
 
@@ -227,3 +234,89 @@ volume_db = 1.0
 [node name="ExplosionPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_odav0")
 volume_db = 5.0
+
+[node name="ObeliskSpawner" type="Node2D" parent="."]
+position = Vector2(-903.653, -2180.67)
+script = ExtResource("16_rysoc")
+obelisk_scene = ExtResource("17_ssvqc")
+spawn_area_size = Vector2(3900, 3400)
+
+[node name="EnemySpawnerR" type="Node2D" parent="."]
+position = Vector2(-2441.47, 2138.33)
+rotation = -0.0206469
+script = ExtResource("18_ssvqc")
+enemy_scene = ExtResource("19_264po")
+min_spawn_time = 2.0
+max_spawn_time = 6.0
+spawn_area_size = Vector2(7000, 200)
+increase_limit_time = 60.0
+
+[node name="EnemySpawnerB" type="Node2D" parent="."]
+position = Vector2(-2469.49, 2128.41)
+script = ExtResource("18_ssvqc")
+enemy_scene = ExtResource("20_1kice")
+min_spawn_time = 5.0
+max_spawn_time = 15.0
+spawn_area_size = Vector2(7000, 200)
+increase_limit_time = 300.0
+when_infinity = 10.0
+
+[node name="EnemySpawnerR2" type="Node2D" parent="."]
+position = Vector2(-2367.06, -3878.88)
+rotation = -0.0206469
+script = ExtResource("18_ssvqc")
+enemy_scene = ExtResource("19_264po")
+min_spawn_time = 2.0
+max_spawn_time = 6.0
+spawn_area_size = Vector2(7000, 200)
+increase_limit_time = 60.0
+
+[node name="EnemySpawnerB2" type="Node2D" parent="."]
+position = Vector2(-2364.08, -3888.89)
+script = ExtResource("18_ssvqc")
+enemy_scene = ExtResource("20_1kice")
+min_spawn_time = 5.0
+max_spawn_time = 15.0
+spawn_area_size = Vector2(7000, 200)
+increase_limit_time = 300.0
+when_infinity = 10.0
+
+[node name="EnemySpawnerR3" type="Node2D" parent="."]
+position = Vector2(-3248.17, -3919.6)
+rotation = -0.0206469
+script = ExtResource("21_5newe")
+enemy_scene = ExtResource("19_264po")
+min_spawn_time = 2.0
+max_spawn_time = 6.0
+spawn_area_size = Vector2(200, 6500)
+increase_limit_time = 60.0
+
+[node name="EnemySpawnerB3" type="Node2D" parent="."]
+position = Vector2(-3245.19, -3929.61)
+script = ExtResource("21_5newe")
+enemy_scene = ExtResource("20_1kice")
+min_spawn_time = 5.0
+max_spawn_time = 15.0
+spawn_area_size = Vector2(200, 6500)
+increase_limit_time = 300.0
+when_infinity = 10.0
+
+[node name="EnemySpawnerR4" type="Node2D" parent="."]
+position = Vector2(4852.8, -3556.58)
+rotation = -0.0206469
+script = ExtResource("21_5newe")
+enemy_scene = ExtResource("19_264po")
+min_spawn_time = 2.0
+max_spawn_time = 6.0
+spawn_area_size = Vector2(200, 6500)
+increase_limit_time = 60.0
+
+[node name="EnemySpawnerB4" type="Node2D" parent="."]
+position = Vector2(4855.77, -3566.59)
+script = ExtResource("21_5newe")
+enemy_scene = ExtResource("20_1kice")
+min_spawn_time = 5.0
+max_spawn_time = 15.0
+spawn_area_size = Vector2(200, 6500)
+increase_limit_time = 300.0
+when_infinity = 10.0

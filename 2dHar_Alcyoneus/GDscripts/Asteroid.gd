@@ -10,8 +10,11 @@ func _ready() -> void:
 	rotation_speed = randf_range(-1.0, 1.0)
 	var random_angle_deg = randf_range(-40.0, 40.0) 
 	direction = Vector2.DOWN.rotated(deg_to_rad(random_angle_deg))
-	connect("body_entered", self._on_body_entered)
-	connect("area_entered", self._on_area_entered)
+	
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
+	if not area_entered.is_connected(_on_area_entered):
+		area_entered.connect(_on_area_entered)
 
 func _process(delta: float) -> void:
 	position += direction.normalized() * speed * delta

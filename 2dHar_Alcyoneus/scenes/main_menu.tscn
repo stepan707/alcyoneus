@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bqc8cckhf61g"]
+[gd_scene load_steps=26 format=3 uid="uid://bqc8cckhf61g"]
 
 [ext_resource type="Script" uid="uid://dorbctijl3hiq" path="res://GDscripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://bifoa8h6wddyl" path="res://modely/map/Nebula Aqua-Pink.png" id="2_bqqt6"]
@@ -64,6 +64,12 @@ fade_time = 0.0
 stream_count = 1
 stream_0 = ExtResource("3_8ln24")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcqid"]
+bg_color = Color(0.886275, 0, 0, 0.901961)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ajci"]
+bg_color = Color(0, 0.6, 0.6, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa1go"]
 bg_color = Color(1, 1, 1, 1)
 
@@ -84,6 +90,9 @@ bg_color = Color(0.407843, 0.152941, 0.152941, 0.796078)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flqon"]
 bg_color = Color(0, 0.443137, 0.537255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7b55j"]
+bg_color = Color(0.568627, 0, 1, 0.901961)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -265,6 +274,7 @@ max_polyphony = 5
 
 [node name="singup" type="Panel" parent="."]
 visible = false
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -272,6 +282,7 @@ anchor_bottom = 1.009
 offset_top = -16.0
 offset_right = 3.0
 offset_bottom = 12.168
+theme_override_styles/panel = SubResource("StyleBoxFlat_rcqid")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="singup"]
 self_modulate = Color(0, 0, 0, 1)
@@ -280,6 +291,13 @@ offset_left = 1.0
 offset_top = 35.0
 offset_right = 1155.0
 offset_bottom = 657.0
+
+[node name="Label5" type="Label" parent="singup/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ajci")
+text = "registration"
+horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="singup/VBoxContainer2"]
 layout_mode = 2
@@ -349,29 +367,27 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_flqon")
 text = "   already have account   "
 
 [node name="login" type="Panel" parent="."]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = 6.0
 offset_right = 1153.0
 offset_bottom = 650.0
-
-[node name="BoxContainer2" type="BoxContainer" parent="login"]
-z_index = 10
-layout_mode = 2
-offset_left = 841.0
-offset_top = 404.0
-offset_right = 1113.0
-offset_bottom = 488.0
-
-[node name="move2" type="Button" parent="login/BoxContainer2"]
-layout_mode = 2
-text = "   don't have account   "
+theme_override_styles/panel = SubResource("StyleBoxFlat_7b55j")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="login"]
 layout_mode = 2
-offset_left = 2.0
-offset_top = 41.0
-offset_right = 1146.0
-offset_bottom = 581.0
+offset_left = 4.0
+offset_top = 47.0
+offset_right = 1148.0
+offset_bottom = 587.0
+
+[node name="Label5" type="Label" parent="login/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ajci")
+text = "logging in"
+horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="login/VBoxContainer"]
 layout_mode = 2
@@ -411,6 +427,23 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_jk1qb")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5dd4i")
 text = "login"
 
+[node name="BoxContainer2" type="BoxContainer" parent="login"]
+z_index = 10
+layout_mode = 0
+offset_left = 850.0
+offset_top = 425.0
+offset_right = 1122.0
+offset_bottom = 507.0
+
+[node name="move2" type="Button" parent="login/BoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0.737255, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lgwnu")
+theme_override_styles/normal = SubResource("StyleBoxFlat_flqon")
+text = "   don't have account   "
+
 [connection signal="mouse_entered" from="Panel/VBoxContainer/start" to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="Panel/VBoxContainer/start" to="." method="_on_start_pressed"]
 [connection signal="mouse_entered" from="Panel/VBoxContainer/credits" to="." method="_on_mouse_entered"]
@@ -424,5 +457,5 @@ text = "login"
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_http_request_request_completed"]
 [connection signal="pressed" from="singup/VBoxContainer2/singup" to="." method="_on_singup_pressed"]
 [connection signal="pressed" from="singup/BoxContainer2/move" to="." method="_on_move_pressed"]
-[connection signal="pressed" from="login/BoxContainer2/move2" to="." method="_on_move_2_pressed"]
 [connection signal="pressed" from="login/VBoxContainer/login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="login/BoxContainer2/move2" to="." method="_on_move_2_pressed"]
