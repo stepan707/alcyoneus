@@ -12,10 +12,13 @@ extends Control
 func _ready():
 	if music_player:
 		music_player.play()
+		
+	var final_score = ScoreManager.score
+	CurrencyManager.add_money_from_score(final_score)
 	
-	if play_again_button:
+	if not play_again_button:
 		play_again_button.pressed.connect(_on_play_again_button_pressed)
-	if main_menu_button:
+	if not main_menu_button:
 		main_menu_button.pressed.connect(_on_main_menu_button_pressed)
 	
 	set_scores()
@@ -36,7 +39,7 @@ func set_scores():
 	if best_score_label:
 		if current_score >= best_score and current_score > 0:
 			best_score_label.text = "Nejlepší skóre: %d (NOVÝ REKORD!)" % current_score
-			best_score_label.add_theme_color_override("font_color", Color.GREEN) # Zelená barva pro radost
+			best_score_label.add_theme_color_override("font_color", Color.GREEN)
 		else:
 			best_score_label.text = "Nejlepší skóre: %d" % best_score
 			best_score_label.add_theme_color_override("font_color", Color.WHITE)

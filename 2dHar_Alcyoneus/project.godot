@@ -21,6 +21,8 @@ config/windows_native_icon="res://icon.ico"
 
 ScoreManager="*res://GDscripts/ScoreManager.gd"
 Global="*res://GDscripts/Global.gd"
+CurrencyManager="*res://GDscripts/CurrencyManager.gd"
+ShipManager="*res://GDscripts/ShipManager.gd"
 
 [display]
 

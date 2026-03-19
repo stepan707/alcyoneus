@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl6k7oxfdx01b"
-path="res://.godot/imported/Spike_SpriteSheet.png-b0aa4b47d4e7af7bb23b6608e5eaf9e2.ctex"
+uid="uid://c5q5mp5bmk6ky"
+path="res://.godot/imported/lucifer_spriteSheet.png-bff425afb078f7c3f2b30489216cd188.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://modely/hrac/Spike_SpriteSheet.png"
-dest_files=["res://.godot/imported/Spike_SpriteSheet.png-b0aa4b47d4e7af7bb23b6608e5eaf9e2.ctex"]
+source_file="res://modely/ships/lucifer_spriteSheet.png"
+dest_files=["res://.godot/imported/lucifer_spriteSheet.png-bff425afb078f7c3f2b30489216cd188.ctex"]
 
 [params]
 

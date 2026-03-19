@@ -26,8 +26,6 @@ func save_score_to_supabase(final_score: int):
 	if final_score <= 0:
 		return
 
-	print("Zahajuji proces ukládání skóre: " + str(final_score))
-
 	var http_check = HTTPRequest.new()
 	add_child(http_check)
 	http_check.request_completed.connect(_on_check_for_save_completed.bind(http_check, final_score))
@@ -42,7 +40,6 @@ func _on_check_for_save_completed(result, response_code, headers, body, http_nod
 	http_node.queue_free()
 
 	if response_code != 200:
-		print("Chyba při kontrole skóre v DB. Kód: " + str(response_code))
 		return
 
 	var json = JSON.parse_string(body.get_string_from_utf8())
@@ -58,12 +55,8 @@ func _on_check_for_save_completed(result, response_code, headers, body, http_nod
 	
 	if existing_id != null:
 		if final_score > existing_score:
-			print("Nový rekord! Aktualizuji ID: " + str(existing_id))
 			_patch_existing_score(existing_id, final_score)
-		else:
-			print("Skóre není vyšší než v DB. Neukládám.")
 	else:
-		print("První hra. Vytvářím záznam.")
 		_post_new_score(final_score)
 
 func _patch_existing_score(record_id, score_val):
@@ -103,11 +96,6 @@ func _post_new_score(score_val):
 func _on_save_completed(result, response_code, headers, body, http_node, action_type):
 	http_node.queue_free()
 	
-	if response_code == 200 or response_code == 201 or response_code == 204:
-		print("Skóre úspěšně uloženo (" + action_type + ")")
-	else:
-		print("Chyba při ukládání (" + action_type + "). Kód: " + str(response_code))
-		print("Odpověď: " + body.get_string_from_utf8())
 
 
 func load_best_score_from_supabase() -> int:
@@ -132,7 +120,6 @@ func _on_load_completed(result, response_code, headers, body, http_node):
 			var loaded_score = int(json[0]["score"])
 			if loaded_score > best_score:
 				best_score = loaded_score
-			print("Skóre načteno: " + str(best_score))
 	
 	http_node.queue_free()
 

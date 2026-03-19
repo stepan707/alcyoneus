@@ -20,7 +20,7 @@ func _ready():
 	add_to_group("enemy")
 	player = get_tree().get_first_node_in_group("player")
 	
-	preferred_distance = randf_range(800,1500)
+	preferred_distance = randf_range(600,1300)
 	
 	var upgrade_timer = Timer.new()
 	upgrade_timer.wait_time = 20.0

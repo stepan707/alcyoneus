@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dquh7f623mq10"
-path="res://.godot/imported/bullet.png-42b1d1a417afa64c95f2c2ae42298404.ctex"
+uid="uid://c36wpb8ea4wae"
+path="res://.godot/imported/goldSnitch_SpriteSheet.png-54a082ae760301d2099c1c30d75cf7d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://modely/Laser Sprites/bullet.png"
-dest_files=["res://.godot/imported/bullet.png-42b1d1a417afa64c95f2c2ae42298404.ctex"]
+source_file="res://modely/ships/goldSnitch_SpriteSheet.png"
+dest_files=["res://.godot/imported/goldSnitch_SpriteSheet.png-54a082ae760301d2099c1c30d75cf7d0.ctex"]
 
 [params]
 

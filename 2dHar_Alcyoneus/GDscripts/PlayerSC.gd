@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 @onready var engine_sound = $EnginePlayer
-@onready var thruster_anim = $AnimatedSprite2D
+@onready var ship_sprite = $Sprite2D
+@onready var animation_player = $AnimationPlayer
 @onready var shoot_sound = $ShootPlayer
 @onready var music_player = get_node("/root/Node2D/MusicPlayer")
 @onready var explosion_player = get_node("/root/Node2D/ExplosionPlayer")
@@ -13,7 +14,6 @@ extends CharacterBody2D
 var powerup_timer: Timer = null
 
 var level = 1
-
 @export var speed = 400
 var alive = true
 
@@ -21,9 +21,54 @@ var can_shoot := true
 var shoot_cooldown := 1.0
 @export var bullet_scene: PackedScene
 
-func _ready():
-	thruster_anim = $AnimatedSprite2D
+
+var ship_data = {
+	"spike": {
+		"texture": preload("res://modely/ships/Spike_SpriteSheet.png"),
+		"game_scale": Vector2(0.5, 0.5)
+	},
+	"gold_snitch": {
+		"texture": preload("res://modely/ships/goldSnitch_SpriteSheet.png"),
+		"game_scale": Vector2(0.7, 0.7)
+	},
+	"bronz_spike": {
+		"texture": preload("res://modely/ships/bronzSpike_spriteSheet.png"),
+		"game_scale": Vector2(1.3, 1.3)
+	},
+	"golden_emerald": {
+		"texture": preload("res://modely/ships/emerald_spriteSheet.png"),
+		"game_scale": Vector2(0.7, 0.7)
+	},
+	"ruby": {
+		"texture": preload("res://modely/ships/demonicRuby_spriteSheet.png"),
+		"game_scale": Vector2(0.7, 0.7)
+	},
+	"archangel": {
+		"texture": preload("res://modely/ships/archengel_spriteSheet.png"),
+		"game_scale": Vector2(0.7, 0.7)
+	},
+	"lucifer": {
+		"texture": preload("res://modely/ships/lucifer_spriteSheet.png"),
+		"game_scale": Vector2(0.7, 0.7)
+	}
+}
+
+func _ready():    
+	var current_ship_id = ShipManager.equipped_ship_id
+	var current_data
 	
+	if ship_data.has(current_ship_id):
+		current_data = ship_data[current_ship_id]
+	else:
+		current_data = ship_data["bronz_spike"]
+
+	ship_sprite.texture = current_data["texture"]
+
+	ship_sprite.rotation_degrees = 90
+
+	var target_scale = current_data["game_scale"]
+	ship_sprite.scale = target_scale
+
 	get_tree().paused = false
 
 	engine_sound.play()
@@ -43,7 +88,6 @@ func _ready():
 	powerup_timer.one_shot = true
 	powerup_timer.timeout.connect(_on_powerup_ended)
 	add_child(powerup_timer)
-
 
 
 func activate_ultimate_mode():
@@ -67,11 +111,13 @@ func _physics_process(delta):
 		var target_velocity = direction * speed
 		velocity = velocity.move_toward(target_velocity, acceleration * delta)
 		
-		if not thruster_anim.is_playing():
-			thruster_anim.play("fly")
+		if animation_player and not animation_player.is_playing():
+			animation_player.play("fly")
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
-		thruster_anim.stop()
+		if animation_player:
+			animation_player.stop()
+			ship_sprite.frame = 0
 	
 	move_and_slide()
 	
@@ -96,7 +142,8 @@ func hit() -> void:
 		engine_sound.stop()
 		if music_player: music_player.stop()
 		if explosion_player: explosion_player.play()        
-		thruster_anim.visible = false        
+		
+		ship_sprite.visible = false    
 		explosion_sprite.visible = true
 		
 		await get_tree().create_timer(1.5).timeout        
@@ -116,86 +163,24 @@ func shoot_bullet():
 	match level:
 		1:
 			spawn_projectile(mouse_dir, 0, 0)
-			
 		2:
 			spawn_projectile(mouse_dir, 2, 5)
 			spawn_projectile(mouse_dir, -2, -5)
-			
 		3:
 			spawn_projectile(mouse_dir, 0, 0)
 			spawn_projectile(mouse_dir, -15, 0)
 			spawn_projectile(mouse_dir, 15, 0)
-			
 		4:
 			spawn_projectile(mouse_dir, 2, 5)
 			spawn_projectile(mouse_dir, -2, -5)
 			spawn_projectile(mouse_dir, -20, -10)
 			spawn_projectile(mouse_dir, 20, 10)
-			
 		5:
 			spawn_projectile(mouse_dir, 0, 0)
 			spawn_projectile(mouse_dir, -10, 0)
 			spawn_projectile(mouse_dir, 10, 0)
 			spawn_projectile(mouse_dir, -25, 0)
 			spawn_projectile(mouse_dir, 25, 0)
-			
-		6:
-			spawn_projectile(mouse_dir, 2, 5)
-			spawn_projectile(mouse_dir, -2, -5)
-			spawn_projectile(mouse_dir, -15, 0)
-			spawn_projectile(mouse_dir, 15, 0)
-			spawn_projectile(mouse_dir, -25, 0)
-			spawn_projectile(mouse_dir, 25, 0)
-			
-		7:
-			spawn_projectile(mouse_dir, 2, 5)
-			spawn_projectile(mouse_dir, -2, -5)
-			spawn_projectile(mouse_dir, -10, 0)
-			spawn_projectile(mouse_dir, 10, 0)
-			spawn_projectile(mouse_dir, -15, 0)
-			spawn_projectile(mouse_dir, 15, 0)
-			spawn_projectile(mouse_dir, -25, 0)
-			spawn_projectile(mouse_dir, 25, 0)
-		8:
-			spawn_projectile(mouse_dir, 2, 5)
-			spawn_projectile(mouse_dir, -2, -5)
-			spawn_projectile(mouse_dir, -10, 0)
-			spawn_projectile(mouse_dir, 10, 0)
-			spawn_projectile(mouse_dir, -15, 0)
-			spawn_projectile(mouse_dir, 15, 0)
-			spawn_projectile(mouse_dir, -25, 0)
-			spawn_projectile(mouse_dir, 25, 0)
-			spawn_projectile(mouse_dir, -30, 0)
-			spawn_projectile(mouse_dir, 30, 0)
-			
-		9:
-			spawn_projectile(mouse_dir, 2, 5)
-			spawn_projectile(mouse_dir, -2, -5)
-			spawn_projectile(mouse_dir, -10, 0)
-			spawn_projectile(mouse_dir, 10, 0)
-			spawn_projectile(mouse_dir, -15, 0)
-			spawn_projectile(mouse_dir, 15, 0)
-			spawn_projectile(mouse_dir, -25, 0)
-			spawn_projectile(mouse_dir, 25, 0)
-			spawn_projectile(mouse_dir, -30, 0)
-			spawn_projectile(mouse_dir, 30, 0)
-			spawn_projectile(mouse_dir, -35, 0)
-			spawn_projectile(mouse_dir, 35, 0)
-		10:
-			spawn_projectile(mouse_dir, 2, 5)
-			spawn_projectile(mouse_dir, -2, -5)
-			spawn_projectile(mouse_dir, -10, 0)
-			spawn_projectile(mouse_dir, 10, 0)
-			spawn_projectile(mouse_dir, -15, 0)
-			spawn_projectile(mouse_dir, 15, 0)
-			spawn_projectile(mouse_dir, -25, 0)
-			spawn_projectile(mouse_dir, 25, 0)
-			spawn_projectile(mouse_dir, -30, 0)
-			spawn_projectile(mouse_dir, 30, 0)
-			spawn_projectile(mouse_dir, -35, 0)
-			spawn_projectile(mouse_dir, 35, 0)
-			spawn_projectile(mouse_dir, -40, 0)
-			spawn_projectile(mouse_dir, 40, 0)
 		100:
 			spawn_projectile(mouse_dir, 2, 5)
 			spawn_projectile(mouse_dir, -2, -5)
@@ -225,14 +210,6 @@ func shoot_bullet():
 			spawn_projectile(mouse_dir, 70, 0)
 			spawn_projectile(mouse_dir, -75, 0)
 			spawn_projectile(mouse_dir, 75, 0)
-			spawn_projectile(mouse_dir, 180, 0)
-			spawn_projectile(mouse_dir, -175, 0)
-			spawn_projectile(mouse_dir, 175, 0)
-			spawn_projectile(mouse_dir, -170, 0)
-			spawn_projectile(mouse_dir, 170, 0)
-			spawn_projectile(mouse_dir, -165, 0)
-			spawn_projectile(mouse_dir, 165, 0)
-			
 		_:
 			spawn_projectile(mouse_dir, 2, 5)
 			spawn_projectile(mouse_dir, -2, -5)
@@ -240,14 +217,6 @@ func shoot_bullet():
 			spawn_projectile(mouse_dir, 10, 0)
 			spawn_projectile(mouse_dir, -15, 0)
 			spawn_projectile(mouse_dir, 15, 0)
-			spawn_projectile(mouse_dir, -25, 0)
-			spawn_projectile(mouse_dir, 25, 0)
-			spawn_projectile(mouse_dir, -30, 0)
-			spawn_projectile(mouse_dir, 30, 0)
-			spawn_projectile(mouse_dir, -35, 0)
-			spawn_projectile(mouse_dir, 35, 0)
-			spawn_projectile(mouse_dir, -40, 0)
-			spawn_projectile(mouse_dir, 40, 0)
 
 
 func spawn_projectile(base_dir: Vector2, angle_offset_deg: float, position_offset: float):

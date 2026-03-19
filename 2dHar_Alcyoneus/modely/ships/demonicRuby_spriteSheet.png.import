@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://domm0o6q455u0"
-path="res://.godot/imported/13.png-47fda0705e1c37fb4bb47b54ada03dfd.ctex"
+uid="uid://cd2wpnpvjve1f"
+path="res://.godot/imported/demonicRuby_spriteSheet.png-48b937a0e428543dfe5f5abb748a211d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://modely/Laser Sprites/13.png"
-dest_files=["res://.godot/imported/13.png-47fda0705e1c37fb4bb47b54ada03dfd.ctex"]
+source_file="res://modely/ships/demonicRuby_spriteSheet.png"
+dest_files=["res://.godot/imported/demonicRuby_spriteSheet.png-48b937a0e428543dfe5f5abb748a211d.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@ extends Area2D
 @export var eject_speed: float = 150.0
 
 @export var min_homing_speed: float = 350.0
-@export var max_homing_speed: float = 510.0
+@export var max_homing_speed: float = 499.0
 
 @export var drag: float = 3.0
 @export var turn_speed: float = 5.0
@@ -40,7 +40,7 @@ func _ready():
 		area_entered.connect(_on_area_entered)
 		
 	current_homing_speed = randf_range(min_homing_speed, max_homing_speed)
-	turn_speed = randf_range(2.5, 5);
+	turn_speed = randf_range(3, 6);
 		
 	start_launch_sequence()
 

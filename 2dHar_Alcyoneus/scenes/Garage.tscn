@@ -1,37 +1,257 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3e4umfjacvhu"]
+[gd_scene load_steps=40 format=3 uid="uid://d3e4umfjacvhu"]
 
-[ext_resource type="Script" uid="uid://baksjl6qkd7xt" path="res://GDscripts/garage.gd" id="1_vgbj5"]
+[ext_resource type="Script" uid="uid://bb8u3jbbil0dc" path="res://GDscripts/garage.gd" id="1_vgbj5"]
+[ext_resource type="Texture2D" uid="uid://b18qx7fnmeusw" path="res://modely/map/1.jpeg" id="2_vgbj5"]
+[ext_resource type="AudioStream" uid="uid://evre74khn02i" path="res://modely/Sounds/hover.wav" id="3_tpskm"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tpskm"]
+texture = ExtResource("2_vgbj5")
+
+[sub_resource type="Gradient" id="Gradient_tpskm"]
+offsets = PackedFloat32Array(0.242938, 1)
+colors = PackedColorArray(0.486275, 0, 0.886275, 1, 0.0862745, 0.807843, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uwphw"]
+gradient = SubResource("Gradient_tpskm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q2e5a"]
+texture = SubResource("GradientTexture2D_uwphw")
+
+[sub_resource type="Gradient" id="Gradient_uwphw"]
+offsets = PackedFloat32Array(0.610169, 1)
+colors = PackedColorArray(0.494118, 0, 0.878431, 1, 0.0862745, 0.807843, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q2e5a"]
+gradient = SubResource("Gradient_uwphw")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3uxhb"]
+texture = SubResource("GradientTexture1D_q2e5a")
+
+[sub_resource type="Gradient" id="Gradient_vgbj5"]
+offsets = PackedFloat32Array(0.0338983, 0.858757)
+colors = PackedColorArray(0.486275, 0, 0.886275, 1, 0.0862745, 0.807843, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tpskm"]
+gradient = SubResource("Gradient_vgbj5")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uwphw"]
+texture = SubResource("GradientTexture1D_tpskm")
+
+[sub_resource type="Gradient" id="Gradient_q2e5a"]
+offsets = PackedFloat32Array(0.1, 0.5, 0.9)
+colors = PackedColorArray(0.0728426, 0.0728426, 0.0728426, 1, 0.933326, 1.0661e-05, 1.92523e-06, 0.929412, 0.0745098, 0.0745098, 0.0745098, 1)
+metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3uxhb"]
+gradient = SubResource("Gradient_q2e5a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_imsuq"]
+texture = SubResource("GradientTexture2D_3uxhb")
+
+[sub_resource type="Gradient" id="Gradient_imsuq"]
+offsets = PackedFloat32Array(0, 0.545455, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.618933, 1.73271e-06, 3.85046e-07, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 11
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rd182"]
+gradient = SubResource("Gradient_imsuq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6t0ip"]
+texture = SubResource("GradientTexture1D_rd182")
+
+[sub_resource type="Gradient" id="Gradient_rd182"]
+offsets = PackedFloat32Array(0.03125, 0.4, 0.59375, 0.96875)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6t0ip"]
+gradient = SubResource("Gradient_rd182")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3dhpt"]
+texture = SubResource("GradientTexture2D_6t0ip")
+
+[sub_resource type="Gradient" id="Gradient_x6lty"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.355932, 0.977401)
+colors = PackedColorArray(0.368627, 0.313726, 0.831373, 0.85098, 0.431373, 0.780392, 1, 0.760784)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5jui4"]
+gradient = SubResource("Gradient_x6lty")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_52rp6"]
+texture = SubResource("GradientTexture2D_5jui4")
+
+[sub_resource type="Gradient" id="Gradient_3uxhb"]
+offsets = PackedFloat32Array(0.0621469, 0.632768)
+colors = PackedColorArray(0.0862745, 0.807843, 1, 1, 0.494118, 0, 0.878431, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_imsuq"]
+gradient = SubResource("Gradient_3uxhb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rd182"]
+texture = SubResource("GradientTexture1D_imsuq")
+
+[sub_resource type="Gradient" id="Gradient_6t0ip"]
+offsets = PackedFloat32Array(0, 0.40678)
+colors = PackedColorArray(0.0862745, 0.807843, 1, 1, 0.494118, 0, 0.878431, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3dhpt"]
+gradient = SubResource("Gradient_6t0ip")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x6lty"]
+texture = SubResource("GradientTexture1D_3dhpt")
+
+[sub_resource type="Gradient" id="Gradient_5jui4"]
+offsets = PackedFloat32Array(0.0903955, 1)
+colors = PackedColorArray(0.0862745, 0.807843, 1, 1, 0.494118, 0, 0.878431, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_52rp6"]
+gradient = SubResource("Gradient_5jui4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b03ny"]
+texture = SubResource("GradientTexture2D_52rp6")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpskm"]
+bg_color = Color(0.709804, 0.572549, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwphw"]
+bg_color = Color(0.756863, 0.662745, 0.2, 0.596078)
+
+[sub_resource type="Gradient" id="Gradient_3dhpt"]
+colors = PackedColorArray(0.839216, 0.65098, 0, 1, 0.713726, 0.345098, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x6lty"]
+gradient = SubResource("Gradient_3dhpt")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5jui4"]
+texture = SubResource("GradientTexture2D_x6lty")
+
+[node name="Hangar" type="Control"]
+layout_mode = 3
+anchor_right = 1.009
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_right = -0.368042
+offset_bottom = 3.0
 script = ExtResource("1_vgbj5")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Back" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 1.0
+offset_right = 1154.0
+offset_bottom = 649.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_tpskm")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = 0.104
-anchor_top = 0.059
-anchor_right = 0.888
-anchor_bottom = 0.983
-offset_left = 0.192001
-offset_top = -31.232
-offset_right = 111.024
-offset_bottom = -30.984
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 18
+[node name="Panel" type="Panel" parent="Back"]
+layout_mode = 0
+offset_right = 935.0
+offset_bottom = 461.0
 
-[node name="Button" type="Button" parent="CanvasLayer"]
-offset_left = 447.0
-offset_top = 559.0
-offset_right = 689.0
-offset_bottom = 602.0
+[node name="ShipImage" type="TextureRect" parent="Back/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -467.0
+offset_top = -231.0
+offset_right = 467.0
+offset_bottom = 231.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 3
+
+[node name="Next" type="Button" parent="Back"]
+layout_mode = 0
+offset_left = 677.0
+offset_top = 475.0
+offset_right = 915.0
+offset_bottom = 530.0
 theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxTexture_q2e5a")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_3uxhb")
+theme_override_styles/normal = SubResource("StyleBoxTexture_uwphw")
+text = "----->"
+
+[node name="exit" type="Button" parent="Back"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 546.0
+offset_right = 336.0
+offset_bottom = 625.0
+theme_override_styles/hover = SubResource("StyleBoxTexture_imsuq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_6t0ip")
+theme_override_styles/normal = SubResource("StyleBoxTexture_3dhpt")
 text = "back to main menu"
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+[node name="ShipName" type="Label" parent="Back"]
+layout_mode = 0
+offset_left = 935.0
+offset_top = 49.0
+offset_right = 1154.0
+offset_bottom = 210.0
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleBoxTexture_52rp6")
+text = "ship name:"
+autowrap_mode = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
-position = Vector2(641, 258)
-scale = Vector2(0.325933, 0.188691)
+[node name="ShipInfo" type="Label" parent="Back"]
+layout_mode = 0
+offset_left = 935.0
+offset_top = 210.0
+offset_right = 1154.0
+offset_bottom = 461.0
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = SubResource("StyleBoxTexture_52rp6")
+text = "ship info:"
+autowrap_mode = 2
 
-[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
+[node name="Previouse" type="Button" parent="Back"]
+layout_mode = 0
+offset_left = 415.0
+offset_top = 475.0
+offset_right = 653.0
+offset_bottom = 530.0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxTexture_rd182")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_x6lty")
+theme_override_styles/normal = SubResource("StyleBoxTexture_b03ny")
+text = "<-----"
+
+[node name="buy_equip" type="Button" parent="Back"]
+layout_mode = 0
+offset_left = 546.0
+offset_top = 560.0
+offset_right = 846.0
+offset_bottom = 626.0
+theme_override_colors/font_color = Color(0.513726, 0, 1, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tpskm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_uwphw")
+text = "buy"
+
+[node name="Money" type="Label" parent="Back"]
+layout_mode = 0
+offset_left = 935.0
+offset_right = 1154.0
+offset_bottom = 49.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_5jui4")
+text = "CR:
+"
+
+[node name="hover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tpskm")
+volume_db = -1.0
+
+[connection signal="mouse_entered" from="Back/Next" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Back/Next" to="." method="_on_next_pressed"]
+[connection signal="mouse_entered" from="Back/exit" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Back/exit" to="." method="_on_exit_pressed"]
+[connection signal="mouse_entered" from="Back/Previouse" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Back/Previouse" to="." method="_on_previouse_pressed"]
+[connection signal="mouse_entered" from="Back/buy_equip" to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="Back/buy_equip" to="." method="_on_action_button_pressed"]

@@ -20,7 +20,7 @@ const SUPABASE_ANON_KEY: String = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3Mi
 var action = ""
 
 func _ready() -> void:
-	music_player.play()
+	music_player.play()	
 	if not http_request_node.request_completed.is_connected(_on_http_request_request_completed):
 		http_request_node.request_completed.connect(_on_http_request_request_completed)
 	
@@ -130,6 +130,8 @@ func _on_http_request_request_completed(result: int, response_code: int, headers
 				Global.user_id = response["user"]["id"]
 				ScoreManager.best_score = 0;
 				ScoreManager.load_best_score_from_supabase()
+				CurrencyManager.load_money_from_supabase()
+				ShipManager.load_ships_from_db()
 				
 				await get_tree().create_timer(1.0).timeout
 				login_panel.visible = false
@@ -140,6 +142,8 @@ func _on_http_request_request_completed(result: int, response_code: int, headers
 				Global.access_token = response["access_token"]
 				Global.user_id = response["user"]["id"]
 				ScoreManager.load_best_score_from_supabase()
+				CurrencyManager.load_money_from_supabase()
+				ShipManager.load_ships_from_db()
 				
 				set_msg("Registrace úspěšná! Vítejte.", Color.GREEN)
 				await get_tree().create_timer(1.5).timeout

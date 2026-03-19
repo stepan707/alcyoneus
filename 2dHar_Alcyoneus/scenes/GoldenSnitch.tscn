@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c3hulh3iwvyy4"]
 
-[ext_resource type="Texture2D" uid="uid://d3r8lhir52bto" path="res://modely/hrac/goldShip.png" id="1_7g5y4"]
+[ext_resource type="Texture2D" uid="uid://d3r8lhir52bto" path="res://modely/ships/goldShip.png" id="1_7g5y4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xo7iq"]
 radius = 15.0

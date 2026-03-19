@@ -33,7 +33,6 @@ func _ready():
 	if slash_area:
 		slash_area.monitoring = true
 		connect("body_entered", self._on_body_entered)
-		print("LittleRed: Signál pro útok propojen.") 
 
 func _physics_process(delta):
 	if not player or not is_instance_valid(player):

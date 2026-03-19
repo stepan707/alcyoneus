@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3r8lhir52bto"
-path="res://.godot/imported/goldShip.png-83439e743295e6b785e3c643f579dc70.ctex"
+uid="uid://culc8t6j80aa7"
+path="res://.godot/imported/Spike_SpriteSheet.png-ebde98038cf7dccf7f362f5896f06bc9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://modely/hrac/goldShip.png"
-dest_files=["res://.godot/imported/goldShip.png-83439e743295e6b785e3c643f579dc70.ctex"]
+source_file="res://modely/ships/Spike_SpriteSheet.png"
+dest_files=["res://.godot/imported/Spike_SpriteSheet.png-ebde98038cf7dccf7f362f5896f06bc9.ctex"]
 
 [params]
 

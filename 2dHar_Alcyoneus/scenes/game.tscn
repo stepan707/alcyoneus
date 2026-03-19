@@ -1,8 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://bviypuhwgy8d8"]
+[gd_scene load_steps=33 format=3 uid="uid://bviypuhwgy8d8"]
 
 [ext_resource type="Script" uid="uid://bj20qe7fitb6l" path="res://GDscripts/PlayerSC.gd" id="2_g8vcy"]
 [ext_resource type="PackedScene" uid="uid://bumlxsowky0yy" path="res://scenes/bullet.tscn" id="3_cqal4"]
-[ext_resource type="Texture2D" uid="uid://dl6k7oxfdx01b" path="res://modely/hrac/Spike_SpriteSheet.png" id="4_o3sye"]
+[ext_resource type="Script" uid="uid://bp4ahvq8jcq3t" path="res://GDscripts/shipSkin.gd" id="4_37s47"]
 [ext_resource type="AudioStream" uid="uid://c8a4iyqr1glof" path="res://modely/Sounds/engine_loop.wav" id="5_24ks5"]
 [ext_resource type="AudioStream" uid="uid://7cdsh1wlprba" path="res://modely/Sounds/shooting.wav" id="6_s4es8"]
 [ext_resource type="Texture2D" uid="uid://ci6viutp1uyo1" path="res://modely/realCoolExplosion.png" id="7_63e4f"]
@@ -33,55 +33,51 @@ func _process(_delta):
 		$MusicPlayer.play()
 "
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
-atlas = ExtResource("4_o3sye")
-region = Rect2(512, 512, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rj586"]
-atlas = ExtResource("4_o3sye")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d21ai"]
-atlas = ExtResource("4_o3sye")
-region = Rect2(512, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kdubu"]
-atlas = ExtResource("4_o3sye")
-region = Rect2(1024, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q6r6c"]
-atlas = ExtResource("4_o3sye")
-region = Rect2(0, 512, 512, 512)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4d7sh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0hol4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rj586")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d21ai")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kdubu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q6r6c")
-}],
-"loop": true,
-"name": &"fly",
-"speed": 12.0
-}]
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_epypp"]
-radius = 25.9943
-height = 64.028
+radius = 33.9931
+height = 91.9795
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hol4"]
-size = Vector2(96.497, 21.5012)
+size = Vector2(152.252, 25.9973)
+
+[sub_resource type="Animation" id="Animation_37s47"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_5newe"]
+resource_name = "fly"
+length = 0.625013
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bt5mj"]
+_data = {
+&"RESET": SubResource("Animation_37s47"),
+&"fly": SubResource("Animation_5newe")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_epypp"]
 size = Vector2(6386.92, 490.472)
@@ -123,21 +119,22 @@ limit_bottom = 1830
 limit_smoothed = true
 editor_draw_limits = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(1.00002, -0.00260925)
-rotation = 1.57026
-scale = Vector2(0.318869, 0.315284)
-sprite_frames = SubResource("SpriteFrames_4d7sh")
-animation = &"fly"
-frame_progress = 0.583751
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+hframes = 3
+vframes = 2
+script = ExtResource("4_37s47")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-29.0025, -0.92485)
+modulate = Color(0.0196078, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(-38.9998, 0.10022)
 rotation = 1.54721
 shape = SubResource("CapsuleShape2D_epypp")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(26.9999, -0.0699496)
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(32.8762, 0.884464)
 shape = SubResource("RectangleShape2D_0hol4")
 
 [node name="EnginePlayer" type="AudioStreamPlayer" parent="CharacterBody2D"]
@@ -153,6 +150,11 @@ position = Vector2(-6.00232, -0.984697)
 rotation = 0.649262
 scale = Vector2(0.617, 0.603)
 texture = ExtResource("7_63e4f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_bt5mj")
+}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -3
