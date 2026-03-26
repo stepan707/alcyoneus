@@ -13,7 +13,7 @@ extends CharacterBody2D
 
 var powerup_timer: Timer = null
 
-var level = 1
+var level = 7
 @export var speed = 400
 var alive = true
 
@@ -181,6 +181,57 @@ func shoot_bullet():
 			spawn_projectile(mouse_dir, 10, 0)
 			spawn_projectile(mouse_dir, -25, 0)
 			spawn_projectile(mouse_dir, 25, 0)
+		6:
+			spawn_projectile(mouse_dir, 5, 0)
+			spawn_projectile(mouse_dir, -5, 0)
+			spawn_projectile(mouse_dir, -10, 0)
+			spawn_projectile(mouse_dir, 10, 0)
+			spawn_projectile(mouse_dir, -25, 0)
+			spawn_projectile(mouse_dir, 25, 0)
+		7:
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 5, 0)
+			spawn_projectile(mouse_dir, -5, 0)
+			spawn_projectile(mouse_dir, -10, 0)
+			spawn_projectile(mouse_dir, 10, 0)
+			spawn_projectile(mouse_dir, -25, 0)
+			spawn_projectile(mouse_dir, 25, 0)
+		8:
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 5, 0)
+			spawn_projectile(mouse_dir, -5, 0)
+			spawn_projectile(mouse_dir, -10, 0)
+			spawn_projectile(mouse_dir, 10, 0)
+			spawn_projectile(mouse_dir, -25, 0)
+			spawn_projectile(mouse_dir, 25, 0)
+			spawn_projectile(mouse_dir, -30, 0)
+			spawn_projectile(mouse_dir, 30, 0)
+		9:
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 5, 0)
+			spawn_projectile(mouse_dir, -5, 0)
+			spawn_projectile(mouse_dir, -10, 0)
+			spawn_projectile(mouse_dir, 10, 0)
+			spawn_projectile(mouse_dir, -25, 0)
+			spawn_projectile(mouse_dir, 25, 0)
+			spawn_projectile(mouse_dir, -30, 0)
+			spawn_projectile(mouse_dir, 30, 0)
+			spawn_projectile(mouse_dir, -35, 0)
+			spawn_projectile(mouse_dir, 35, 0)
+		10:
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 5, 0)
+			spawn_projectile(mouse_dir, -5, 0)
+			spawn_projectile(mouse_dir, -10, 0)
+			spawn_projectile(mouse_dir, 10, 0)
+			spawn_projectile(mouse_dir, -25, 0)
+			spawn_projectile(mouse_dir, 25, 0)
+			spawn_projectile(mouse_dir, -30, 0)
+			spawn_projectile(mouse_dir, 30, 0)
+			spawn_projectile(mouse_dir, -35, 0)
+			spawn_projectile(mouse_dir, 35, 0)
+			spawn_projectile(mouse_dir, -40, 0)
+			spawn_projectile(mouse_dir, 40, 0)
 		100:
 			spawn_projectile(mouse_dir, 2, 5)
 			spawn_projectile(mouse_dir, -2, -5)
@@ -211,12 +262,19 @@ func shoot_bullet():
 			spawn_projectile(mouse_dir, -75, 0)
 			spawn_projectile(mouse_dir, 75, 0)
 		_:
-			spawn_projectile(mouse_dir, 2, 5)
-			spawn_projectile(mouse_dir, -2, -5)
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 5, 0)
+			spawn_projectile(mouse_dir, -5, 0)
 			spawn_projectile(mouse_dir, -10, 0)
 			spawn_projectile(mouse_dir, 10, 0)
-			spawn_projectile(mouse_dir, -15, 0)
-			spawn_projectile(mouse_dir, 15, 0)
+			spawn_projectile(mouse_dir, -25, 0)
+			spawn_projectile(mouse_dir, 25, 0)
+			spawn_projectile(mouse_dir, -30, 0)
+			spawn_projectile(mouse_dir, 30, 0)
+			spawn_projectile(mouse_dir, -35, 0)
+			spawn_projectile(mouse_dir, 35, 0)
+			spawn_projectile(mouse_dir, -40, 0)
+			spawn_projectile(mouse_dir, 40, 0)
 
 
 func spawn_projectile(base_dir: Vector2, angle_offset_deg: float, position_offset: float):
