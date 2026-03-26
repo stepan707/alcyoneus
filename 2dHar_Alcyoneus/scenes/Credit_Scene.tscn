@@ -15,25 +15,64 @@ anchor_left = 0.104
 anchor_top = 0.059
 anchor_right = 0.888
 anchor_bottom = 0.983
-offset_left = 0.192001
-offset_top = -31.232
-offset_right = 111.024
-offset_bottom = -30.984
+offset_left = -123.808
+offset_top = -37.232
+offset_right = 129.024
+offset_bottom = 8.01599
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "[center]
+[font_size=50][b]ALCYONEUS[/b][/font_size]
+
+[font_size=30][b]MAIN DEVELOPER[/b][/font_size]
+[font_size=25]Štěpán Šabacký[/font_size]
+
+
+[font_size=30][b]GRAPHICS & ASSETS[/b][/font_size]
+
+[b]Visual Seppuku[/b]
+[i]Spike Space Frigate[/i]
+(visual-seppuku.itch.io/spike-space-frigate)
+
+[b]Frostwindz[/b]
+[i]Pixel Art Sci-Fi Spaceships[/i]
+(frostwindz.itch.io/pixel-art-sci-fi-spaceships)
+
+[b]Frostwindz[/b]
+[i]Pixel Art Slashes (Attack Animations)[/i]
+(frostwindz.itch.io/pixel-art-slashes)
+
+[b]CreativeKind[/b]
+[i]Flying Obelisk[/i]
+(creativekind.itch.io/flying-obelisk)
+
+
+[font_size=30][b]AI ASSISTANCE[/b][/font_size]
+
+[b]Google Gemini[/b]
+Skin creation
+(Modified versions of the original model and first skin)
+
+
+[font_size=30][b]SPECIAL THANKS[/b][/font_size]
+
+To all players.
+Thank you for playing!
+[/center]"
 
 [node name="Button" type="Button" parent="CanvasLayer" groups=["buttons"]]
-offset_left = 447.0
-offset_top = 559.0
-offset_right = 689.0
-offset_bottom = 602.0
+offset_left = 24.0
+offset_top = 571.0
+offset_right = 266.0
+offset_bottom = 614.0
 theme_override_font_sizes/font_size = 25
 text = "back to main menu"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
-position = Vector2(589, 217)
+position = Vector2(571, 217)
 scale = Vector2(1.18164, 1.10059)
 texture = ExtResource("2_fgixj")
 
