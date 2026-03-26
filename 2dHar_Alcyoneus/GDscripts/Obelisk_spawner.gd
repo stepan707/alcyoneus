@@ -2,8 +2,8 @@ extends Node2D
 
 @export var obelisk_scene: PackedScene
 
-@export var min_spawn_time: float = 1
-@export var max_spawn_time: float = 10
+@export var min_spawn_time: float = 3
+@export var max_spawn_time: float = 12
 
 @export var spawn_area_size: Vector2 = Vector2(3700, 3500) 
 

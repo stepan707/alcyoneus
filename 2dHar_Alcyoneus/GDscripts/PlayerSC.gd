@@ -13,7 +13,7 @@ extends CharacterBody2D
 
 var powerup_timer: Timer = null
 
-var level = 7
+var level = 1
 @export var speed = 400
 var alive = true
 
@@ -60,7 +60,7 @@ func _ready():
 	if ship_data.has(current_ship_id):
 		current_data = ship_data[current_ship_id]
 	else:
-		current_data = ship_data["bronz_spike"]
+		current_data = ship_data["spike"]
 
 	ship_sprite.texture = current_data["texture"]
 
@@ -261,6 +261,13 @@ func shoot_bullet():
 			spawn_projectile(mouse_dir, 70, 0)
 			spawn_projectile(mouse_dir, -75, 0)
 			spawn_projectile(mouse_dir, 75, 0)
+			spawn_projectile(mouse_dir, 180, 0)
+			spawn_projectile(mouse_dir, -175, 0)
+			spawn_projectile(mouse_dir, 175, 0)
+			spawn_projectile(mouse_dir, -170, 0)
+			spawn_projectile(mouse_dir, 170, 0)
+			spawn_projectile(mouse_dir, -165, 0)
+			spawn_projectile(mouse_dir, 165, 0)
 		_:
 			spawn_projectile(mouse_dir, 0, 0)
 			spawn_projectile(mouse_dir, 5, 0)
