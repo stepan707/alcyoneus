@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var speed := 450
-@export var lifespan := 1.5
+@export var lifespan := 2.5
 
 var direction := Vector2.ZERO
 var time_alive := 0.0

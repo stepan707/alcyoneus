@@ -95,7 +95,7 @@ func move_towards_target(target: Vector2, delta: float):
 	position += Vector2.RIGHT.rotated(rotation) * current_homing_speed * delta
 
 func _on_body_entered(body):
-	if body.is_in_group("player") and body.has_method("hit"):
+	if body.is_in_group("player") and body.has_method("hit") and body.is_invincible == false:
 		body.hit()
 		explode()
 

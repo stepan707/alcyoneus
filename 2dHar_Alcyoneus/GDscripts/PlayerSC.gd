@@ -14,6 +14,8 @@ extends CharacterBody2D
 var powerup_timer: Timer = null
 
 var level = 1
+var is_invincible = false;
+
 @export var speed = 400
 var alive = true
 
@@ -168,77 +170,88 @@ func shoot_bullet():
 			spawn_projectile(mouse_dir, -2, -5)
 		3:
 			spawn_projectile(mouse_dir, 0, 0)
-			spawn_projectile(mouse_dir, -15, 0)
-			spawn_projectile(mouse_dir, 15, 0)
+			spawn_projectile(mouse_dir, -10, 0)
+			spawn_projectile(mouse_dir, 10, 0)
 		4:
 			spawn_projectile(mouse_dir, 2, 5)
 			spawn_projectile(mouse_dir, -2, -5)
-			spawn_projectile(mouse_dir, -20, -10)
-			spawn_projectile(mouse_dir, 20, 10)
+			spawn_projectile(mouse_dir, -10, -10)
+			spawn_projectile(mouse_dir, 10, 10)
 		5:
 			spawn_projectile(mouse_dir, 0, 0)
 			spawn_projectile(mouse_dir, -10, 0)
 			spawn_projectile(mouse_dir, 10, 0)
-			spawn_projectile(mouse_dir, -25, 0)
-			spawn_projectile(mouse_dir, 25, 0)
+			spawn_projectile(mouse_dir, -15, 0)
+			spawn_projectile(mouse_dir, 15, 0)
 		6:
 			spawn_projectile(mouse_dir, 5, 0)
 			spawn_projectile(mouse_dir, -5, 0)
 			spawn_projectile(mouse_dir, -10, 0)
 			spawn_projectile(mouse_dir, 10, 0)
-			spawn_projectile(mouse_dir, -25, 0)
-			spawn_projectile(mouse_dir, 25, 0)
+			spawn_projectile(mouse_dir, -15, 0)
+			spawn_projectile(mouse_dir, 15, 0)
 		7:
 			spawn_projectile(mouse_dir, 0, 0)
 			spawn_projectile(mouse_dir, 5, 0)
 			spawn_projectile(mouse_dir, -5, 0)
 			spawn_projectile(mouse_dir, -10, 0)
 			spawn_projectile(mouse_dir, 10, 0)
-			spawn_projectile(mouse_dir, -25, 0)
-			spawn_projectile(mouse_dir, 25, 0)
+			spawn_projectile(mouse_dir, -15, 0)
+			spawn_projectile(mouse_dir, 15, 0)
 		8:
 			spawn_projectile(mouse_dir, 0, 0)
 			spawn_projectile(mouse_dir, 5, 0)
 			spawn_projectile(mouse_dir, -5, 0)
 			spawn_projectile(mouse_dir, -10, 0)
 			spawn_projectile(mouse_dir, 10, 0)
+			spawn_projectile(mouse_dir, -15, 0)
+			spawn_projectile(mouse_dir, 15, 0)
+			spawn_projectile(mouse_dir, -20, 0)
+			spawn_projectile(mouse_dir, 20, 0)
 			spawn_projectile(mouse_dir, -25, 0)
 			spawn_projectile(mouse_dir, 25, 0)
-			spawn_projectile(mouse_dir, -30, 0)
-			spawn_projectile(mouse_dir, 30, 0)
 		9:
 			spawn_projectile(mouse_dir, 0, 0)
 			spawn_projectile(mouse_dir, 5, 0)
 			spawn_projectile(mouse_dir, -5, 0)
 			spawn_projectile(mouse_dir, -10, 0)
 			spawn_projectile(mouse_dir, 10, 0)
+			spawn_projectile(mouse_dir, -15, 0)
+			spawn_projectile(mouse_dir, 15, 0)
+			spawn_projectile(mouse_dir, -20, 0)
+			spawn_projectile(mouse_dir, 20, 0)
 			spawn_projectile(mouse_dir, -25, 0)
 			spawn_projectile(mouse_dir, 25, 0)
 			spawn_projectile(mouse_dir, -30, 0)
 			spawn_projectile(mouse_dir, 30, 0)
-			spawn_projectile(mouse_dir, -35, 0)
-			spawn_projectile(mouse_dir, 35, 0)
 		10:
 			spawn_projectile(mouse_dir, 0, 0)
 			spawn_projectile(mouse_dir, 5, 0)
 			spawn_projectile(mouse_dir, -5, 0)
 			spawn_projectile(mouse_dir, -10, 0)
 			spawn_projectile(mouse_dir, 10, 0)
+			spawn_projectile(mouse_dir, -15, 0)
+			spawn_projectile(mouse_dir, 15, 0)
+			spawn_projectile(mouse_dir, -20, 0)
+			spawn_projectile(mouse_dir, 20, 0)
 			spawn_projectile(mouse_dir, -25, 0)
 			spawn_projectile(mouse_dir, 25, 0)
 			spawn_projectile(mouse_dir, -30, 0)
 			spawn_projectile(mouse_dir, 30, 0)
 			spawn_projectile(mouse_dir, -35, 0)
 			spawn_projectile(mouse_dir, 35, 0)
-			spawn_projectile(mouse_dir, -40, 0)
-			spawn_projectile(mouse_dir, 40, 0)
 		100:
+			spawn_projectile(mouse_dir, 0, 0)
 			spawn_projectile(mouse_dir, 2, 5)
 			spawn_projectile(mouse_dir, -2, -5)
+			spawn_projectile(mouse_dir, 5, 5)
+			spawn_projectile(mouse_dir, -5, -5)
 			spawn_projectile(mouse_dir, -10, 0)
 			spawn_projectile(mouse_dir, 10, 0)
 			spawn_projectile(mouse_dir, -15, 0)
 			spawn_projectile(mouse_dir, 15, 0)
+			spawn_projectile(mouse_dir, -20, 0)
+			spawn_projectile(mouse_dir, 20, 0)
 			spawn_projectile(mouse_dir, -25, 0)
 			spawn_projectile(mouse_dir, 25, 0)
 			spawn_projectile(mouse_dir, -30, 0)
@@ -268,6 +281,475 @@ func shoot_bullet():
 			spawn_projectile(mouse_dir, 170, 0)
 			spawn_projectile(mouse_dir, -165, 0)
 			spawn_projectile(mouse_dir, 165, 0)
+		777:   #GODMODE 
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 5)
+			spawn_projectile(mouse_dir, -2, -5)
+			spawn_projectile(mouse_dir, -5, 0)
+			spawn_projectile(mouse_dir, 5, 0)
+			spawn_projectile(mouse_dir, -8, 0)
+			spawn_projectile(mouse_dir, 8, 0)
+			spawn_projectile(mouse_dir, -10, 0)
+			spawn_projectile(mouse_dir, 10, 0)
+			spawn_projectile(mouse_dir, -12, 0)
+			spawn_projectile(mouse_dir, 12, 0)
+			spawn_projectile(mouse_dir, -15, 0)
+			spawn_projectile(mouse_dir, 15, 0)
+			spawn_projectile(mouse_dir, -17, 0)
+			spawn_projectile(mouse_dir, 17, 0)
+			spawn_projectile(mouse_dir, -20, 0)
+			spawn_projectile(mouse_dir, 20, 0)
+			spawn_projectile(mouse_dir, -22, 0)
+			spawn_projectile(mouse_dir, 22, 0)
+			spawn_projectile(mouse_dir, -25, 0)
+			spawn_projectile(mouse_dir, 25, 0)
+			spawn_projectile(mouse_dir, -30, 0)
+			spawn_projectile(mouse_dir, 30, 0)
+			spawn_projectile(mouse_dir, -35, 0)
+			spawn_projectile(mouse_dir, 35, 0)
+			spawn_projectile(mouse_dir, -40, 0)
+			spawn_projectile(mouse_dir, 40, 0)
+			spawn_projectile(mouse_dir, -45, 0)
+			spawn_projectile(mouse_dir, 45, 0)
+			spawn_projectile(mouse_dir, -50, 0)
+			spawn_projectile(mouse_dir, 50, 0)
+			spawn_projectile(mouse_dir, -55, 0)
+			spawn_projectile(mouse_dir, 55, 0)
+			spawn_projectile(mouse_dir, -60, 0)
+			spawn_projectile(mouse_dir, 60, 0)
+			spawn_projectile(mouse_dir, -65, 0)
+			spawn_projectile(mouse_dir, 65, 0)
+			spawn_projectile(mouse_dir, -70, 0)
+			spawn_projectile(mouse_dir, 70, 0)
+			spawn_projectile(mouse_dir, -75, 0)
+			spawn_projectile(mouse_dir, 75, 0)
+			spawn_projectile(mouse_dir, -80, 0)
+			spawn_projectile(mouse_dir, 80, 0)
+			spawn_projectile(mouse_dir, -85, 0)
+			spawn_projectile(mouse_dir, 85, 0)
+			spawn_projectile(mouse_dir, -90, 0)
+			spawn_projectile(mouse_dir, 90, 0)
+			spawn_projectile(mouse_dir, -95, 0)
+			spawn_projectile(mouse_dir, 95, 0)
+			spawn_projectile(mouse_dir, -100, 0)
+			spawn_projectile(mouse_dir, 100, 0)
+			spawn_projectile(mouse_dir, -105, 0)
+			spawn_projectile(mouse_dir, 105, 0)
+			spawn_projectile(mouse_dir, -110, 0)
+			spawn_projectile(mouse_dir, 110, 0)
+			spawn_projectile(mouse_dir, -115, 0)
+			spawn_projectile(mouse_dir, 115, 0)
+
+			spawn_projectile(mouse_dir, 180, 0)
+			spawn_projectile(mouse_dir, -173, 0)
+			spawn_projectile(mouse_dir, 173, 0)
+			spawn_projectile(mouse_dir, -175, 0)
+			spawn_projectile(mouse_dir, 175, 0)
+			spawn_projectile(mouse_dir, -173, 0)
+			spawn_projectile(mouse_dir, 173, 0)
+			spawn_projectile(mouse_dir, -170, 0)
+			spawn_projectile(mouse_dir, 170, 0)
+			spawn_projectile(mouse_dir, -167, 0)
+			spawn_projectile(mouse_dir, 167, 0)
+			spawn_projectile(mouse_dir, -165, 0)
+			spawn_projectile(mouse_dir, 165, 0)
+			spawn_projectile(mouse_dir, -160, 0)
+			spawn_projectile(mouse_dir, 160, 0)
+			spawn_projectile(mouse_dir, -155, 0)
+			spawn_projectile(mouse_dir, 155, 0)
+			spawn_projectile(mouse_dir, -150, 0)
+			spawn_projectile(mouse_dir, 150, 0)
+			spawn_projectile(mouse_dir, -145, 0)
+			spawn_projectile(mouse_dir, 145, 0)
+			spawn_projectile(mouse_dir, -140, 0)
+			spawn_projectile(mouse_dir, 140, 0)
+			spawn_projectile(mouse_dir, -135, 0)
+			spawn_projectile(mouse_dir, 135, 0)
+			spawn_projectile(mouse_dir, -130, 0)
+			spawn_projectile(mouse_dir, 130, 0)
+			spawn_projectile(mouse_dir, -125, 0)
+			spawn_projectile(mouse_dir, 125, 0)
+			spawn_projectile(mouse_dir, -120, 0)
+			spawn_projectile(mouse_dir, 120, 0)
+
+		707:  #MINIGUN
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 4, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 4, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 4, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 4, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 4, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 4, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 4, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 4, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 4, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 4, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 4, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -2, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 4, 0)
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), -4, 0)
+
+
+		717: #ONEWAYCANON
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+			spawn_projectile(mouse_dir, 0, 0)
+			spawn_projectile(mouse_dir, 2, 0)
+			spawn_projectile(mouse_dir, -2, 0)
+			spawn_projectile(mouse_dir, 4, 0)
+			spawn_projectile(mouse_dir, -4, 0)
+			await get_tree().create_timer(0.1).timeout
+
+
+		727:  #LASER
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+			spawn_projectile((get_global_mouse_position() - global_position).normalized(), 0, 0)
+			await get_tree().create_timer(0.005).timeout
+
+
 		_:
 			spawn_projectile(mouse_dir, 0, 0)
 			spawn_projectile(mouse_dir, 5, 0)

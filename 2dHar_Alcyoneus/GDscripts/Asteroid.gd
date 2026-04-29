@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and body.is_invincible == false:
 		body.hit()
 		queue_free()
 

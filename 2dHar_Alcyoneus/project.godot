@@ -23,6 +23,7 @@ ScoreManager="*res://GDscripts/ScoreManager.gd"
 Global="*res://GDscripts/Global.gd"
 CurrencyManager="*res://GDscripts/CurrencyManager.gd"
 ShipManager="*res://GDscripts/ShipManager.gd"
+CheatManager="*res://GDscripts/cheat_manager.gd"
 
 [display]
 
@@ -34,6 +35,10 @@ player=""
 bullet=""
 asteroid=""
 buttons=""
+blue=""
+litlleRed=""
+AsteroidTimers=""
+obelisk=""
 
 [input]
 

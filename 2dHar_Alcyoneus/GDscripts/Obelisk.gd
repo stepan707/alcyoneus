@@ -25,5 +25,9 @@ func _on_body_entered(body: Node2D):
 			body.level += 1
 			queue_free()
 		else:
-			body.activate_ultimate_mode()
+			if body.level == 777 or body.level == 707 or body.level == 717 or body.level == 727:
+				pass
+			else:
+				body.activate_ultimate_mode()
+	
 	queue_free()

@@ -192,7 +192,7 @@ shape = SubResource("RectangleShape2D_d21ai")
 script = ExtResource("9_ekhvm")
 asteroid_scene = ExtResource("10_ca42v")
 
-[node name="AsteroidTimer" type="Timer" parent="Spawner"]
+[node name="AsteroidTimer" type="Timer" parent="Spawner" groups=["AsteroidTimers"]]
 wait_time = 0.4
 autostart = true
 
@@ -200,7 +200,7 @@ autostart = true
 script = ExtResource("9_ekhvm")
 asteroid_scene = ExtResource("11_rysoc")
 
-[node name="AsteroidTimer" type="Timer" parent="Spawner2"]
+[node name="AsteroidTimer" type="Timer" parent="Spawner2" groups=["AsteroidTimers"]]
 wait_time = 0.8
 autostart = true
 
@@ -208,7 +208,7 @@ autostart = true
 script = ExtResource("9_ekhvm")
 asteroid_scene = ExtResource("12_ssvqc")
 
-[node name="AsteroidTimer" type="Timer" parent="Spawner3"]
+[node name="AsteroidTimer" type="Timer" parent="Spawner3" groups=["AsteroidTimers"]]
 autostart = true
 
 [node name="Spawner4" type="Node2D" parent="."]
@@ -216,7 +216,7 @@ position = Vector2(0.999996, -0.00259078)
 script = ExtResource("9_ekhvm")
 asteroid_scene = ExtResource("13_264po")
 
-[node name="AsteroidTimer" type="Timer" parent="Spawner4"]
+[node name="AsteroidTimer" type="Timer" parent="Spawner4" groups=["AsteroidTimers"]]
 wait_time = 0.4
 autostart = true
 
@@ -225,7 +225,7 @@ position = Vector2(-12, 0.0310893)
 script = ExtResource("9_ekhvm")
 asteroid_scene = ExtResource("14_1kice")
 
-[node name="AsteroidTimer" type="Timer" parent="Spawner5"]
+[node name="AsteroidTimer" type="Timer" parent="Spawner5" groups=["AsteroidTimers"]]
 wait_time = 0.2
 autostart = true
 
@@ -237,13 +237,14 @@ volume_db = 1.0
 stream = ExtResource("16_odav0")
 volume_db = 5.0
 
-[node name="ObeliskSpawner" type="Node2D" parent="."]
+[node name="ObeliskSpawner" type="Node2D" parent="." groups=["obelisk"]]
 position = Vector2(-903.653, -2180.67)
 script = ExtResource("16_rysoc")
 obelisk_scene = ExtResource("17_ssvqc")
+max_spawn_time = 17.0
 spawn_area_size = Vector2(3900, 3400)
 
-[node name="EnemySpawnerR" type="Node2D" parent="."]
+[node name="EnemySpawnerR" type="Node2D" parent="." groups=["litlleRed"]]
 position = Vector2(-2441.47, 2138.33)
 rotation = -0.0206469
 script = ExtResource("18_ssvqc")
@@ -253,7 +254,7 @@ max_spawn_time = 6.0
 spawn_area_size = Vector2(7000, 200)
 increase_limit_time = 60.0
 
-[node name="EnemySpawnerB" type="Node2D" parent="."]
+[node name="EnemySpawnerB" type="Node2D" parent="." groups=["blue"]]
 position = Vector2(-2469.49, 2128.41)
 script = ExtResource("18_ssvqc")
 enemy_scene = ExtResource("20_1kice")
@@ -263,7 +264,7 @@ spawn_area_size = Vector2(7000, 200)
 increase_limit_time = 300.0
 when_infinity = 10.0
 
-[node name="EnemySpawnerR2" type="Node2D" parent="."]
+[node name="EnemySpawnerR2" type="Node2D" parent="." groups=["litlleRed"]]
 position = Vector2(-2367.06, -3878.88)
 rotation = -0.0206469
 script = ExtResource("18_ssvqc")
@@ -273,7 +274,7 @@ max_spawn_time = 6.0
 spawn_area_size = Vector2(7000, 200)
 increase_limit_time = 60.0
 
-[node name="EnemySpawnerB2" type="Node2D" parent="."]
+[node name="EnemySpawnerB2" type="Node2D" parent="." groups=["blue"]]
 position = Vector2(-2364.08, -3888.89)
 script = ExtResource("18_ssvqc")
 enemy_scene = ExtResource("20_1kice")
@@ -283,7 +284,7 @@ spawn_area_size = Vector2(7000, 200)
 increase_limit_time = 300.0
 when_infinity = 10.0
 
-[node name="EnemySpawnerR3" type="Node2D" parent="."]
+[node name="EnemySpawnerR3" type="Node2D" parent="." groups=["litlleRed"]]
 position = Vector2(-3248.17, -3919.6)
 rotation = -0.0206469
 script = ExtResource("21_5newe")
@@ -293,7 +294,7 @@ max_spawn_time = 6.0
 spawn_area_size = Vector2(200, 6500)
 increase_limit_time = 60.0
 
-[node name="EnemySpawnerB3" type="Node2D" parent="."]
+[node name="EnemySpawnerB3" type="Node2D" parent="." groups=["blue"]]
 position = Vector2(-3245.19, -3929.61)
 script = ExtResource("21_5newe")
 enemy_scene = ExtResource("20_1kice")
@@ -303,7 +304,7 @@ spawn_area_size = Vector2(200, 6500)
 increase_limit_time = 300.0
 when_infinity = 10.0
 
-[node name="EnemySpawnerR4" type="Node2D" parent="."]
+[node name="EnemySpawnerR4" type="Node2D" parent="." groups=["litlleRed"]]
 position = Vector2(4852.8, -3556.58)
 rotation = -0.0206469
 script = ExtResource("21_5newe")
@@ -313,7 +314,7 @@ max_spawn_time = 6.0
 spawn_area_size = Vector2(200, 6500)
 increase_limit_time = 60.0
 
-[node name="EnemySpawnerB4" type="Node2D" parent="."]
+[node name="EnemySpawnerB4" type="Node2D" parent="." groups=["blue"]]
 position = Vector2(4855.77, -3566.59)
 script = ExtResource("21_5newe")
 enemy_scene = ExtResource("20_1kice")
